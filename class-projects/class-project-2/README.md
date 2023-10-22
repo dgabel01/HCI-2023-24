@@ -22,11 +22,11 @@
   - She's tech-savvy and frequently shops online for clothing, accessories, and cosmetics.
 
 - **Goals and Needs:**
-  1. Discover new fashion trends and products.
-  2. Easy navigation through categories and filters.
-  3. Seamless and secure payment options.
-  4. Personalized recommendations based on her browsing and purchase history.
-  5. Frequent updates on new arrivals and promotions.
+  - Discover new fashion trends and products.
+  - Easy navigation through categories and filters.
+  - Seamless and secure payment options.
+  - Personalized recommendations based on her browsing and purchase history.
+  - Frequent updates on new arrivals and promotions.
 
 #### 2. Dave, the Occasional Shopper
 ![Dave picture](/misc/user-personas/AI_Generated_Image_Dave.jpeg)
@@ -41,10 +41,10 @@
   - He doesn't spend much time online shopping and values simplicity and efficiency.
 
 - **Goals and Needs:**
-  1. Find specific products quickly without extensive browsing.
-  2. Reliable and straightforward checkout process.
-  3. Notifications on order status and shipping.
-  4. A clear and hassle-free return policy.
+  - Find specific products quickly without extensive browsing.
+  - Reliable and straightforward checkout process.
+  - Notifications on order status and shipping.
+  - A clear and hassle-free return policy.
 
 #### 3. Mia, the Budget-Conscious Mom
 ![Mia picture](/misc/user-personas/AI_Generated_Image_Mia.jpeg)
@@ -59,11 +59,11 @@
   - She's price-conscious and appreciates deals, discounts, and bulk buying options.
 
 - **Goals and Needs:**
-  1. Affordable product options with good quality.
-  2. User-friendly mobile app for on-the-go shopping.
-  3. Loyalty programs and discounts for returning customers.
-  4. Efficient customer support, especially for product inquiries and returns.
-  5. Timely notifications on sales and promotions.
+  - Affordable product options with good quality.
+  - User-friendly mobile app for on-the-go shopping.
+  - Loyalty programs and discounts for returning customers.
+  - Efficient customer support, especially for product inquiries and returns.
+  - Timely notifications on sales and promotions.
 
 
 ## 2. Information architecture
@@ -155,14 +155,14 @@ Visual represantion of the web app's sitemap:
 
 
 **Home Page**
-   Navbar
-      -Login/Register
-      -About Us
-      -Contact Us
-      -Shopping Cart
-      -Add a New Product
-      -Blog Page 
-   Main Content
-      -Product grid
-      -Single product 
-   Footer
+ - Navbar
+   - Login/Register
+   - About Us
+   - Contact Us
+   - Shopping Cart
+   - Add a New Product
+   - Blog Page
+- Main Content
+  - Product Grid
+  - Single Product
+- Footer
