@@ -7,7 +7,3 @@
 
 
 
-https://github.com/dgabel01/HCI-2023-24/assets/84846888/fe1ec60e-d548-40d6-9924-b1a9e270bcb8
-
-
-
