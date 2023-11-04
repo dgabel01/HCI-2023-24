@@ -20,7 +20,7 @@ export default async function Products() {
   const products = await getProducts();
   return (
     <main className="flex flex-col items-center min-h-screen max-w-5xl m-auto p-10">
-      <h1 className="text-3xl font-bold p-10">Products "grid":</h1>
+      <h1 className="text-3xl font-bold p-10">Products grid:</h1>
       <ul className="flex flex-col gap-8 justify-center">
         {products.map((product) => (
           <li key={product.id} >
