@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <nav className="bg-yellow-500 p-4">
-          <ul className="flex gap-8 justify-around">
+        <ul className="flex flex-col md:flex-row md:gap-8 justify-around">
             {Object.entries(pages).map(([name, path]) => (
             <li key={name}>
               <Link href={path}>{name}</Link>

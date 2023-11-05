@@ -1,4 +1,4 @@
-# Low/High fidelity prototype
+# Low fidelity prototype
 
 Utilizing Figma, a low fidelity prototype is desinged for the landing/home page.
 

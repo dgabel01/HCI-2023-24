@@ -2,17 +2,17 @@ import Link from "next/link";
 import { PureComponent } from "react";
 
 export interface Product {
-  albumId: number;
   id: number;
   title: string;
-  url: string;
-  thumbnailUrl: string;
+  price:number;
+  description:string;
+  images:string;
 }
 
-const BASE_API_URL = "https://jsonplaceholder.typicode.com";
+const BASE_API_URL = "https://api.escuelajs.co/api/v1/products";
 
 const getProducts = async (): Promise<Product[]> => {
-  const data = await fetch(`${BASE_API_URL}/photos?_limit=100`); // Add the query parameter to limit to 100 products
+  const data = await fetch(`${BASE_API_URL}`);
   return data.json();
 };
 
@@ -21,14 +21,15 @@ export default async function Products() {
   return (
     <main className="flex flex-col items-center min-h-screen max-w-5xl m-auto p-10">
       <h1 className="text-3xl font-bold p-10">Products grid:</h1>
-      <ul className="flex flex-col gap-8 justify-center">
+      <ul className="grid grid-cols-3 gap-24">
         {products.map((product) => (
-          <li key={product.id} >
+          <li key={product.id} className="border border-solid border-stone-900 rounded-xl p-4" >
             <Link href={`/products/${product.id}`}>
-              <span className="text-2xl text-purple-500">
-                Product: {product.title}
+              <span className="text-xl text-purple-600">
+               {product.description}
               </span>
-              <img src={product.url} alt="product-picture" />
+              <img src={product.images} alt="product-picture" className="mt-2"/>
+              <span className="text-center"><p>{product.price}&euro;</p></span>
             </Link>
           </li>
         ))}
