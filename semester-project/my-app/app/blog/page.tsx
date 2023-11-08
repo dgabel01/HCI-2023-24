@@ -10,7 +10,7 @@ export interface Post {
 const BASE_API_URL = "https://jsonplaceholder.typicode.com";
 
 const getPosts = async (): Promise<Post[]> => {
-  const data = await fetch(`${BASE_API_URL}/posts`);
+  const data = await fetch(`${BASE_API_URL}/posts?_limit=10`);
   return data.json();
 };
 
