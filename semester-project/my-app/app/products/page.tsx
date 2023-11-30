@@ -12,7 +12,8 @@ export interface Product {
 const BASE_API_URL = "https://api.escuelajs.co/api/v1/products";
 
 const getProducts = async (): Promise<Product[]> => {
-  const data = await fetch(`${BASE_API_URL}?limit=10`);
+  const limit = 10;
+  const data = await fetch(`${BASE_API_URL}?limit=${limit}`);
   return data.json();
 };
 
