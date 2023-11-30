@@ -11,6 +11,8 @@
 
 ![High fidelity desktop](/misc/EasyShop_desktop.png)
 
+
+
  2) Mobile:      
 
  ![High fidelity mobile](/misc/EasyShop_mobile.png)
