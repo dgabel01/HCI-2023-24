@@ -22,7 +22,7 @@ export default function Hero() {
         <div
           className="absolute inset-0 bg-no-repeat bg-center bg-cover filter blur-sm"
           style={{
-            backgroundImage: `url('${heroImage.src}')`,
+            backgroundImage: `url(&apos;${heroImage.src}&apos;)`,
           }}
         ></div>
 
