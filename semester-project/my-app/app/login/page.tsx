@@ -1,6 +1,6 @@
 export default function Login() {
     return (
-     <p>Login page</p>
+     <p>Login page, will change depending on user logged in status.</p>
     )
   }
   

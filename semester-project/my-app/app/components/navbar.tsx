@@ -40,7 +40,7 @@ export default function Navbar({}: Props) {
                 <Bars3Icon className="h-6 w-6" aria-hidden = "true" />
             </Popover.Button>
         </div>
-    <Popover.Overlay className="sm:hidden fixed inset-0 bg-black opacity-30"/>
+    <Popover.Overlay style={{ zIndex: 1000 }}className="sm:hidden fixed inset-0 bg-black opacity-30"/>
     <Transition
         as={Fragment}
         enter = "duration-200 ease-out"
@@ -52,6 +52,7 @@ export default function Navbar({}: Props) {
     >
         <Popover.Panel
         focus className="absolute inset-x-0 top-0 origin-top-right transform p-2 transition md:hidden"
+        style={{ zIndex: 1000 }}
         >
             <div className="rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 divide-y-2 divide-gray-50">
                 <div className="px-5 pt-5 pb-6">
@@ -87,8 +88,8 @@ export default function Navbar({}: Props) {
             </div>
         </Popover.Panel>
     </Transition>
-        <div className="hidden sm:block md:flex items-center">
-        <Link className="mr-8 text-white"  href="/shopping-cart"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+        <div className="hidden sm:flex flex-row md:flex items-center">
+        <Link className="mr-4 text-white"  href="/shopping-cart"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                                                 </svg>
         </Link>            
