@@ -33,7 +33,7 @@ export default function Hero() {
               Start selling today!
             </h1>
             <p className="text-sm sm:text-xs md:text-lg lg:text-xl xl:text-2xl mb-6 font-bold">
-              Not sure how to make money from your craft? We've got you covered, register as a seller today and list your items for sale. We'll handle the rest.
+              Not sure how to make money from your craft? We have you covered, register as a seller today and list your items for sale. We will handle the rest.
             </p>
 
             {/* Buttons */}
