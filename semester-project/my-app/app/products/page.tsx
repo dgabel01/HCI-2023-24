@@ -21,10 +21,11 @@ export default async function Products() {
   const products = await getProducts();
   return (
     <main className="flex flex-col items-center min-h-screen max-w-5xl m-auto p-4 sm:p-10">
+      <input type="text" name="" id="" placeholder="Search products" className="outline-none rounded-lg px-2 py-2"/>
       <h1 className="text-2xl sm:text-3xl font-bold p-4 sm:p-10">Products grid:</h1>
       <ul className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-8">
         {products.map((product) => (
-          <li key={product.id} className="border border-solid border-stone-900 rounded-xl p-4">
+          <li key={product.id} className="border-stone-900 rounded-xl p-4 overflow-hidden shadow-lg outline-1">
             <Link href={`/products/${product.id}`}>
               <span className="text-lg sm:text-xl text-purple-600">
                 {product.description}
