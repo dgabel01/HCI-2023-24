@@ -16,9 +16,9 @@ export default function BlogInviteCard(){
            alt = "card-picture"
            />
            <div className="px-6 py-4">
-             <span className="tracking-widest text-xs title-font font-medium text-gray-400 mb-2">Free Course</span>
+             <span className="tracking-widest text-xs title-font font-medium text-gray-400 mb-2">John Doe</span>
              <div className="title-font text-lg font-medium mb-2">
-              <Link href={"#"}>Next.js tutorials for beginners</Link>
+              <Link href={"#"}>What we learned from starting a webshop</Link>
              </div>
              <p>
              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

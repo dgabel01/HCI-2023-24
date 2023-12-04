@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import heroImage from "@/public/photo-1579190520010-4226162a0cb5.png";
 import Link from "next/link";
@@ -8,7 +9,7 @@ export default function Hero() {
       {/* Hero Image */}
       <div className="relative w-full h-0" style={{ paddingBottom: "33.33%" }}>
         <Image
-          className="rounded-md absolute inset-0"
+          className="absolute inset-0"
           src={heroImage}
           layout="fill"
           objectFit="cover"

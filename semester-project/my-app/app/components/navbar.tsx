@@ -24,7 +24,7 @@ type Props = {}
 export default function Navbar({}: Props) {
   return (
     <Popover 
-    className={"mx-auto flex items-center border-b-2 p-2 h-24 bg-blue-400"}>
+    className={"flex items-center border-b-2 p-2 h-24 bg-blue-400 "}>
         <HeaderLogo></HeaderLogo>
         <div className="grow ">
             <div className="hidden sm:flex items-center justify-center gap-2 md:gap-8">

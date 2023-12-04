@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import Link from 'next/link'
-const inter = Inter({ subsets: ['latin'] })
+const space = Space_Grotesk({ subsets: ['latin'] });
 import Navbar from './components/navbar'
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={space.className}>
         <Navbar/>
         {children}
       </body>
