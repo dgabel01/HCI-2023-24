@@ -20,17 +20,17 @@ const getProducts = async (): Promise<Product[]> => {
 export default async function Products() {
   const products = await getProducts();
   return (
-    <main className="flex flex-col items-center min-h-screen max-w-5xl m-auto p-4 sm:p-10">
+    <main className="flex flex-col items-center min-h-screen max-w-5xl m-auto p-4 sm:justify-center">
       <h1 className="text-2xl sm:text-3xl font-bold p-4 sm:p-10">Find the best products</h1>
-      <p className="mb-6 text-xl">Explore tech, clothing and everyday items</p>
+      <p className="mb-6 text-xl">Explore tech, clothing and more</p>
 
-      <div className="flex flex-col sm:flex-row items-stretch justify-center mb-8">
+      <div className="flex flex-col sm:flex-row items-center justify-center mb-8">
         <div className="flex flex-wrap items-row justify-start sm:justify-between gap-2 mb-2 sm:mb-0">
-          <div className="rounded-xl border-2 py-2 px-1 hidden sm:block"><p>Category 1</p></div>
-          <div className="rounded-xl border-2 py-2 px-1 hidden sm:block"><p>Category 2</p></div>
-          <div className="rounded-xl border-2 py-2 px-1 hidden sm:block"><p>Category 3</p></div>
-          <div className="rounded-xl border-2 py-2 px-1 hidden sm:block"><p>Category 4</p></div>
-          <div className="rounded-xl border-2 py-2 px-1 bg-cyan-500 hover:shadow-lg"><p>More filters</p></div>
+          <div className="rounded-xl border-2 py-2 px-1 hidden sm:block hover:shadow-lg cursor-pointer"><p>Category 1</p></div>
+          <div className="rounded-xl border-2 py-2 px-1 hidden sm:block hover:shadow-lg cursor-pointer"><p>Category 2</p></div>
+          <div className="rounded-xl border-2 py-2 px-1 hidden sm:block hover:shadow-lg cursor-pointer"><p>Category 3</p></div>
+          <div className="rounded-xl border-2 py-2 px-1 hidden sm:block hover:shadow-lg cursor-pointer"><p>Category 4</p></div>
+          <div className="rounded-xl border-2 py-2 px-1 bg-cyan-500 hover:shadow-lg cursor-pointer"><p>More filters</p></div>
         </div>
         <div className="ml-0 sm:ml-12 mt-2 sm:mt-0">
           <input
@@ -45,8 +45,8 @@ export default async function Products() {
 
       <ul className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-12 sm:gap-8">
         {products.map((product) => (
-          <div className="w-64">
-          <li key={product.id} className="border-stone-900 rounded-xl p-4 overflow-hidden shadow-lg outline-1">
+          <div key={product.id} className="w-64">
+          <li className="border-stone-900 rounded-xl p-4 overflow-hidden shadow-lg outline-1">
             <Link href={`/products/${product.id}`}>
               <img src={product.images} alt="product-picture" className="mt-2" />
               <span className="text-lg sm:text-xl text-purple-600">

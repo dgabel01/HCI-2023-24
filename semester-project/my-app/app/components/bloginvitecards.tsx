@@ -12,6 +12,7 @@ export default function BlogInviteCards() {
          <BlogInviteCard/>
          <BlogInviteCard/>
          <BlogInviteCard/>
+
       </div>
     
   )
