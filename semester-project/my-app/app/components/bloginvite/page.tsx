@@ -13,7 +13,7 @@ export default function BlogInvite(){
             </div>
             <BlogInviteCards/>
             <div className="flex items-row items-center align-center m-auto">
-            <GoDotFill size={30} color="#cf182c"/><GoDot size={30}/><GoDot size={30}/>
+            <GoDotFill size={30} color="black"/><GoDot size={30}/><GoDot size={30}/>
             </div>
           </div>
         </>

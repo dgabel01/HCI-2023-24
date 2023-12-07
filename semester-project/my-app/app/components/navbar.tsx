@@ -25,10 +25,10 @@ export default function Navbar({}: Props) {
 
   return (
     <Popover 
-    className={"flex items-center border-b-2 p-2 h-24 bg-header xs:w-full"}
+    className={"xs:w-full flex items-center border-b-2 p-2 h-24 bg-header"}
     >
         <HeaderLogo></HeaderLogo>
-        <div className="grow ">
+        <div className="grow">
             <div className="hidden sm:flex items-center justify-center gap-2 md:gap-8">
                 <Link className="text-white" href="/about">About us</Link>
                 <Link  className="text-white"href="/contact">Contact us</Link>

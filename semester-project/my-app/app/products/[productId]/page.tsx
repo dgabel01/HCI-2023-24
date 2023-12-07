@@ -7,7 +7,7 @@ interface Params {
 const BASE_API_URL = "https://api.escuelajs.co/api/v1/products";
 
 const getProduct = async (id: string): Promise<Product> => {
-  const limit = 10;
+  const limit = 24;
   const data = await fetch(`${BASE_API_URL}/${id}?limit=${limit}`);
   return data.json();
 };

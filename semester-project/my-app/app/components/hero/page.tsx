@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <div className="relative w-full">
       {/* Hero Image */}
-      <div className="w-full h-0" style={{ paddingBottom: "10%",}}>
+      <div className="w-full h-0" style={{ paddingBottom: "8%",}}>
         <Image
           className="absolute inset-0"
           src={heroImage}
@@ -32,7 +32,7 @@ export default function Hero() {
             <h1 className="text-5xl sm:text-xl mt-4 md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 decoration-white subpixel-antialiased">
               Start selling today!
             </h1>
-            <p className="text-2xl sm:text-xs md:text-xl lg:text-xl xl:text-2xl mb-6 font-bold decoration-white subpixel-antialiased">
+            <p className="text-2xl xs:text-md sm:text-md md:text-2xl lg:text-xl xl:text-2xl mb-6 font-bold decoration-white subpixel-antialiased">
               Not sure how to make money from your craft? We have you covered, register as a seller today and list your items for sale. We will handle the rest.
             </p>
 

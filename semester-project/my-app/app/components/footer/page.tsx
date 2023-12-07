@@ -46,7 +46,7 @@ export default function Footer() {
 						<Link href={"/about"}>About us </Link>
 						</li>
 						<li className="text-white text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
-							Contact us
+						<Link href={"/contact"}>Contact us</Link>
 						</li>
 						<li className="text-white text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
 							Careers

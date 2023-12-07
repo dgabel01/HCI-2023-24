@@ -8,11 +8,10 @@ type Props = {}
 export default function BlogInviteCards() {
   return (
 
-      <div className="flex items-row gap-4">
+      <div className="flex gap-8 flex-row xs:flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row">
          <BlogInviteCard/>
          <BlogInviteCard/>
          <BlogInviteCard/>
-
       </div>
     
   )

@@ -5,7 +5,6 @@ import Products from './products/page'
 import Hero from './components/hero/page'
 import Footer from './components/footer/page'
 import BlogInvite from './components/bloginvite/page'
-
 export default function Home() {
   return (
     <main>
