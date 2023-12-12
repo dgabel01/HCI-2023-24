@@ -17,7 +17,7 @@ const config: Config = {
         'header': '#00516e',
       },
       screens: {
-        'xs': '465px',
+        'xs': '165px',
       },
     },
   },
