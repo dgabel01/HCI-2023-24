@@ -62,9 +62,12 @@ export default async function Products() {
           </div>
         ))}
       </ul>
-      <div className="flex flex-row">
-        <p className="mt-8">Pagination...</p>
-        <span className="mt-9 ml-4"><IoBuildOutline /></span>
+      <div className="flex flex-row mt-4">
+          <div className="join">
+              <button className="join-item btn">«</button>
+              <button className="join-item btn">Page 1</button>
+              <button className="join-item btn">»</button>
+          </div>
       </div>
     </main>
   );

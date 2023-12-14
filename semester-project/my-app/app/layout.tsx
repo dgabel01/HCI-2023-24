@@ -4,6 +4,7 @@ import './globals.css'
 import Link from 'next/link'
 const space = Space_Grotesk({ subsets: ['latin'] });
 import Navbar from './components/navbar'
+import Footer from './components/footer/page';
 
 export const metadata: Metadata = {
   title: 'EasyShop',
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body className={space.className}>
         <Navbar/>
         {children}
+        <Footer/>
       </body>
     </html>
   )
