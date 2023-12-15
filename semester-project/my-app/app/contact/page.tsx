@@ -36,7 +36,7 @@ export default function Contact() {
               Contact Us
             </h1>
             <p className="text-2xl xs:text-md sm:text-md md:text-2xl lg:text-xl xl:text-2xl mb-6 font-bold decoration-white subpixel-antialiased">
-            Drop us a line through the form below and we'll get back to you as soon as possible
+            Drop us a line through the form below and we&apos;ll get back to you as soon as possible
             </p>
           </div>
         </div>
