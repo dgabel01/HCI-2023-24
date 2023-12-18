@@ -1,5 +1,5 @@
 // pages/products/[id].tsx
-import { useProductContext } from '@/context/ProductContext';
+/*import { useProductContext } from '@/context/ProductContext';
 import { Product } from '@/app/products/page';
 import  P  from 'next/dist/server/next';
 
@@ -40,4 +40,14 @@ const ProductDetailPage = ({ product }: ProductDetailProps) => {
   );
 };
 
-export default ProductDetailPage;
+export default ProductDetailPage;*/
+
+import React from 'react'
+
+const page = () => {
+  return (
+    <div>removed for vercel</div>
+  )
+}
+
+export default page
