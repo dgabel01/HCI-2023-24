@@ -1,27 +1,43 @@
-import { Product } from "../page";
+// pages/products/[id].tsx
+import { useProductContext } from '@/context/ProductContext';
+import { Product } from '@/app/products/page';
+import  P  from 'next/dist/server/next';
 
-interface Params {
-  productId: string;
+interface ProductDetailProps {
+  product: Product;
 }
 
-const BASE_API_URL = "https://api.escuelajs.co/api/v1/products";
+export async function load({ params }: { params: typeof P }) {
+  const productId = params.id as string;
+  const { products } = useProductContext();
+  console.log('Fetched products:', products);
+  const product = products.find((p) => p.id === Number(productId));
 
-const getProduct = async (id: string): Promise<Product> => {
-  const limit = 24;
-  const data = await fetch(`${BASE_API_URL}/${id}?limit=${limit}`);
-  return data.json();
-};
+  if (!product) {
+    console.error('Product not found. Product ID:', productId);
+    throw new Error('Product not found');
+  }
 
-export default async function Product({ params }: { params: Params }) {
-  const product = await getProduct(params.productId);
+  return {
+    props: {
+      product,
+    },
+  };
+}
+
+const ProductDetailPage = ({ product }: ProductDetailProps) => {
+  if (!product) {
+    console.error('Product not found. Product:', product);
+    return <p>Product not found</p>;
+  }
 
   return (
-    <main className="flex flex-col items-center min-h-screen max-w-3xl m-auto p-10 overflow-hidden shadow-lg mt-12">
-      <h1 className="text-3xl font-bold p-10 capitalize">
-      <img src={product.images} alt="product-picture" />
-        <span className="text-neutral-400">Product:{product.id}:</span> {product.description}
-        <span className="text-center mt-2"><p>{product.price}&euro;</p></span>
-      </h1>
-    </main>
+    <div>
+      <h1>{product.title}</h1>
+      <p>{product.description}</p>
+      <p>{product.price} &euro;</p>
+    </div>
   );
-}
+};
+
+export default ProductDetailPage;

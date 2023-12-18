@@ -1,13 +1,18 @@
+"use client"
+import React, {useState} from 'react'
 import Image from "next/image"
 import heroimg from "@/public/hero-contact-f6fac17c.webp"
 import { IoIosSend } from "react-icons/io";
 import customerserviceimg from "@/public/Customer-Service-Management.png"
+import Form from './components/form';
+
+
+
 
 export default function Contact() {
   return (
-    <main className="flex flex-col items-center justify-center">
-
-<div className="relative w-full">
+<main className="flex flex-col items-center justify-center">
+  <div className="relative w-full">
       {/* Hero Image */}
       <div className="w-full h-0" style={{ paddingBottom: "8%",}}>
         <Image
@@ -19,17 +24,7 @@ export default function Contact() {
         />
       </div>
 
-      {/* Overlay Container with Blurred Background */}
-      <div className="flex items-center justify-center">
-        {/* Blurred Background */}
-        <div
-          className="absolute inset-0 bg-no-repeat bg-center bg-cover filter flex items-center"
-          style={{
-            backgroundImage: `url(${heroimg.src})`,
-          }}
-        ></div>
-
-        {/* Content Container */}
+      <div className="flex items-center justify-center">   
         <div className="relative z-10 text-white text-center p-4 md:p-8 lg:p-12">
           <div className="max-w-screen-md mb-40 rounded-xl p-8 bg-opacity-50">
             <h1 className="text-5xl sm:text-xl mt-4 md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 decoration-white subpixel-antialiased">
@@ -43,31 +38,7 @@ export default function Contact() {
       </div>
     </div>
 
-
-      <div className="">
-        <form action="" className="flex flex-col justify-center items-center p-4">
-          <div className="flex gap-8 my-12 xs:flex-col sm:flex-col md:flex-row">
-            <input type="text" placeholder="First name*" className="rounded-xl p-2 border-2 hover:shadow-lg"/>
-            <input type="text" placeholder="Last name*" className="rounded-xl p-2 border-2 hover:shadow-lg"/>
-          </div>
-          <input type="text" placeholder="Email address*" className="p-2 rounded-xl w-80 border-2 hover:shadow-lg" />
-
-          <div className="flex gap-8 mt-8 xs:flex-col md:flex-row">
-            <select id="" name="" placeholder="Role*" className="rounded-xl p-2 border-2 hover:shadow-lg">
-              <option>Buyer</option>
-              <option>Seller</option>
-            </select>
-            <input type="text" name="" id="" placeholder="EasyShop account name" className="rounded-xl p-2 border-2 hover:shadow-lg"/>
-          </div>
-          
-          <div className="flex items-center justify-center">
-            <textarea placeholder="Tell us more about your issue" name="" id="" className="my-8 xs:w-64 sm:w-64 md:w-96 h-28 w-auto rounded-xl p-2 outline-none border-2 hover:shadow-lg"></textarea>
-          </div>
-        </form>
-        <div className="flex flex-row justify-center items-center">
-          <button className="btn btn-success px-4">Send</button>
-        </div>
-      </div>
+      <Form/>
 
 
       <div className="flex flex-col">
@@ -87,15 +58,12 @@ export default function Contact() {
       </div>
 
 
-      <div>
-       
+      <div>  
        <Image
           src={customerserviceimg}
           alt="img"
           width={900}
        />
-       
-
       </div>
 
     </main>

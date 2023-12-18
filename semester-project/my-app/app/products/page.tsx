@@ -1,7 +1,11 @@
+"use client"
 import Link from "next/link";
 import { PureComponent } from "react";
 import { IoBuildOutline } from "react-icons/io5";
 import Pagination from '@etchteam/next-pagination'
+import { useProductContext } from "@/context/ProductContext";
+import ProductCard from "./ProductCard";
+
 
 export interface Product {
   id: number;
@@ -11,19 +15,20 @@ export interface Product {
   images:string;
 }
 
-const BASE_API_URL = "https://api.escuelajs.co/api/v1/products?offset=0&limit=24";
+const Products = ()=> {
 
-const getProducts = async (): Promise<Product[]> => {
-  const limit = 5;
-  const data = await fetch(`${BASE_API_URL}`);
-  return data.json();
-};
+  const {products} = useProductContext()
 
-export default async function Products() {
-  const products = await getProducts();
-  return (
-    <main className="flex flex-col items-center min-h-screen max-w-5xl m-auto p-4 sm:justify-center">
-      <h1 className="text-2xl sm:text-3xl font-bold p-4 sm:p-10">Find the best products</h1>
+  if(products.length===0){
+    return(
+      <h1 className="text-center text-red-500 p-5 font-bold text-xl">No products added yet!</h1>
+    );
+  }
+
+  return(
+
+   <main className="flex flex-col items-center min-h-screen max-w-5xl m-auto p-4 sm:justify-center">
+     <h1 className="text-2xl sm:text-3xl font-bold p-4 sm:p-10">Find the best products</h1>
       <p className="mb-6 text-xl">Explore tech, clothing and more</p>
 
       <div className="flex flex-col sm:flex-row items-center justify-center mb-8">
@@ -45,34 +50,31 @@ export default async function Products() {
        </div>
       </div>
 
-      <ul className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-12 sm:gap-8">
+
+
+      <div className="flex flex-wrap gap-4 items-center justify-center">
         {products.map((product) => (
-          <div key={product.id} className="w-64 ">
-          <li className="border-stone-900 rounded-xl p-4 overflow-hidden shadow-lg outline-1">
-            <Link href={`/products/${product.id}`}>
-              <img src={product.images} alt="product-picture" className="mt-2" />
-              <span className="text-lg sm:text-xl text-purple-600">
-                {product.description}
-              </span>
-              <span className="text-center">
-                <p className="mt-4">{product.price}&euro;</p>
-              </span>
-            </Link>
-          </li>
-          </div>
+          <ProductCard product={product} key={product.id}></ProductCard>
         ))}
-      </ul>
-      <div className="flex flex-row mt-4">
+      </div>
+
+
+
+    <div className="flex flex-row mt-4">
           <div className="join">
               <button className="join-item btn">«</button>
               <button className="join-item btn">Page 1</button>
               <button className="join-item btn">»</button>
           </div>
-      </div>
-    </main>
+    </div>
+
+
+  </main>
+
   );
-}
+ 
+  
+ 
+};
 
-
-
-
+export default Products;

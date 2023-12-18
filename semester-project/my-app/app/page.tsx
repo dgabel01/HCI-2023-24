@@ -5,7 +5,8 @@ import Products from './products/page'
 import Hero from './components/hero/page'
 import Footer from './components/footer/page'
 import BlogInvite from './components/bloginvite/page'
-export default function Home() {
+
+const Home = ()=> {
   return (
     <main>
       <Hero/>
@@ -14,3 +15,5 @@ export default function Home() {
     </main>
   )
 }
+
+export default Home;
