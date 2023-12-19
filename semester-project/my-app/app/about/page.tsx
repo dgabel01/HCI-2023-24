@@ -76,7 +76,7 @@ export default function About() {
         </h1>
       </div>
 
-      <div className="flex gap-24 items-center justify-center my-24 xs:flex-col lg:flex-row">
+      <div className="flex gap-24 items-center justify-center my-24 xs:flex-col lg:flex-col">
         <TestimonialCard 
           name="John Doe"
           location = "Split"
@@ -100,9 +100,9 @@ export default function About() {
 
       <div className="flex flex-col">
         <div>
-          <p className="text-bold text-2xl text-center mb-12 font-bold xs:mt-4 sm:mt-4 md:mt-32">How to get started with our platform</p>
+          <p className="text-bold text-2xl text-center mb-12 font-bold xs:mt-4 mx-4 sm:mt-4 mx-4 md:mt-32">How to get started with our platform</p>
         </div>
-        <div className="flex justify-evenly items-stretch xs:flex-col xs:items-center sm:flex-col sm:items-center md:flex-row">
+        <div className="flex justify-evenly items-stretch xs:flex-col xs:items-center  sm:items-center lg:flex-row">
            <Steps/>
         </div>
       </div>
