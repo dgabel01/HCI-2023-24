@@ -9,4 +9,8 @@ References to class projects:
 - [Class project 5: Next.js - Dynamic routes, data fetching ](/class-projects/class-project-5/)
 - [Class project 6: Full Responsive Page Coding](/class-projects/class-project-6/)
 - [Class project 7: Weekly progress, status and problems](/class-projects/class-project-7/)
+- [Class project 8: Weekly progress, status and problems](/class-projects/class-project-8/)
+- [Class project 9: Weekly progress, status and problems](/class-projects/class-project-9/)
+- [Class project 10: Weekly progress, status and problems](/class-projects/class-project-10/)
+
 

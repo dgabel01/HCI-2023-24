@@ -41,24 +41,19 @@ export default function Contact() {
       <Form/>
 
 
-      <div className="flex flex-col">
-          <h1 className="text-2xl font-bold my-8">If you need to contact us for any other matters, please use the following contact channels:</h1>
-          <div className="flex flex-row">
-            <IoIosSend />
-            <p className="text-xl mb-2">For security incidents, email security@easyshop.com.</p>
-          </div>
-          <div className="flex flex-row">
-            <IoIosSend/>
-            <p className="text-xl mb-2">For any complaints (e.g. related to sustainability, human rights, or environmental law), please send an email to  complaints@easyshop.com.</p>
-          </div>
-          <div className="flex flex-row">
-          <IoIosSend />
-          <p className="text-xl mb-2">For any other issues, please send an email to hello@easyshop.com.</p>
-          </div>
+    <div className="flex flex-col gap-8 ml-4 xs:text-center lg:text-start">
+      <h1 className="text-2xl font-bold my-8 mx-2">If you need to contact us for any other matters, please use the following contact channels:</h1>
+      <div className="flex flex-col xs:flex-row xs:text-center md:text-start">
+        <p className="text-xl mb-2">For security incidents, email security@easyshop.com.</p>
       </div>
-
-
-      <div>  
+      <div className="flex flex-col xs:flex-row xs:text-center md:text-start">
+        <p className="text-xl mb-2">For any complaints (e.g. related to sustainability, human rights, or environmental law), please send an email to complaints@easyshop.com.</p>
+      </div>
+      <div className="flex flex-col xs:flex-row xs:text-center md:text-start">
+        <p className="text-xl mb-2">For any other issues, please send an email to hello@easyshop.com.</p>
+      </div>
+    </div>
+    <div>  
        <Image
           src={customerserviceimg}
           alt="img"

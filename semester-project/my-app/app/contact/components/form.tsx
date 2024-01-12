@@ -20,6 +20,8 @@ const Form: React.FC = () => {
   });
 
   const [loading, setLoading] = useState<boolean>(false);
+  const [successMessage, setSuccessMessage] = useState<string>("");
+
 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -45,7 +47,7 @@ const Form: React.FC = () => {
           console.error('Error submitting form data:', error);
         } finally {
           setLoading(false);
-  
+          
           setFormData({ 
             name: '',
             surname: '',
@@ -54,6 +56,10 @@ const Form: React.FC = () => {
             accountname: '',
             text: '',
           });
+          setSuccessMessage("Thank you for reaching out to us, we will get back to you shortly!");
+          setTimeout(() => {
+            setSuccessMessage("");
+          }, 6500);
         }
       }, 1500); 
     };
@@ -130,6 +136,9 @@ const Form: React.FC = () => {
         >
         {loading ? 'Sending...' : 'Send'}
       </button>
+      </div>
+      <div className="col-span-2 text-green-500 mt-2 animate-pulse text-center text-xl">
+        <p>{successMessage}</p>
       </div>
     </div>
   );

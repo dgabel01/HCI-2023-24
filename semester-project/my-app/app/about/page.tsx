@@ -38,7 +38,7 @@ export default function About() {
             alt="second-image"
           />
         </div>
-        <div className="flex flex-col ml-12 my-36 ">
+        <div className="flex flex-col mt-12 xs:text-center ">
           <h2 className="font-extrabold text-xl p-4">OUR STORY</h2>
           <h1 className="font-extrabold text-3xl p-4">EasyShop powers thousands of daily product sales</h1>
           <p className=" p-4 text-xl">Over a decade ago, we started a customer oriented online shop. None of the ecommerce solutions at the time gave us the control we needed to be successful—so we built our own.</p>
@@ -49,12 +49,12 @@ export default function About() {
       <div className="w-3/4 mx-auto flex flex-col items-center justify-center mt-16 p-4 mb-36 p-24">
         <h2 className="text-2xl font-extrabold mb-4 text-center">OUR MISSION</h2>
         <h1 className="text-3xl font-extrabold mb-2 text-center">Making commerce better for everyone</h1>
-        <p className="text-xl text-center">We help people achieve independence by making it easier to start, run, and grow their product sales.</p>
+        <p className="text-xl text-center">We help peo3ple achieve independence by making it easier to start, run, and grow their product sales.</p>
         <p className="text-xl text-center">We believe the future of commerce has more voices, not fewer, so we are reducing the barriers to business ownership to make commerce better for everyone.</p>
       </div>
       
-      <div className="w-full flex mt-8 xs:flex-col sm:flex-col md:flex-row" >
-        <div className="flex flex-col ml-12">
+      <div className="w-full flex mt-8 xs:flex-col xs:text-center sm:flex-col text-center md:flex-row text-start" >
+        <div className="flex flex-col mx-4 my-12 xs:text-center sm:text-center md:text-start">
           <h2 className="font-extrabold mb-2 text-xl p-4">OUR TEAM AND SOCIAL IMPACT</h2>
           <h1 className="font-extrabold text-3xl mb-2 p-4">Creating a community for impact</h1>
           <p className="mb-8 p-4 text-xl">EasyShop has grown from 2 people in a coffee shop to over a 1,000 across the globe. With hundreds of businesses powered by EasyShop, we invest in our people and our communities. Our Social Impact initiatives focus on enabling an equitable future by building products and programs to support our team and merchants.</p>
