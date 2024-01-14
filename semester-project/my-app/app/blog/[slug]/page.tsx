@@ -1,4 +1,4 @@
-import { BlogItem } from "@/types";
+import { BlogItem } from "@/app/types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { createClient } from "contentful";
 
@@ -31,7 +31,7 @@ const fetchBlogPost = async (slug: string): Promise<BlogItem> => {
     "fields.slug[match]": slug,
   };
   const queryResult = await client.getEntries(queryOptions);
-  return queryResult.items[0];
+  return queryResult.items[0] as unknown as BlogItem;
 };
 
 export default async function BlogPage(props: BlogPageProps) {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BlogQueryResult } from "@/types";
+import { BlogQueryResult } from "@/app/types";
 import { createClient } from "contentful";
 
 //https://www.printful.com/blog - page look
@@ -11,7 +11,7 @@ const client = createClient({
 
 const getBlogEntries = async (): Promise<BlogQueryResult> => {
   const entries = await client.getEntries({ content_type: "blog" });
-  return entries;
+  return entries as unknown as BlogQueryResult;
 };
 
 export default async function Blog() {
