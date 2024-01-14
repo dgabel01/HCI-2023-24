@@ -1,35 +1,41 @@
 import Link from "next/link";
+import { BlogQueryResult } from "@/types";
+import { createClient } from "contentful";
 
-export interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+//https://www.printful.com/blog - page look
 
-const BASE_API_URL = "https://jsonplaceholder.typicode.com";
+const client = createClient({
+  space: process.env.SPACE_ID || "",
+  accessToken: process.env.ACCESS_TOKEN || "",
+});
 
-const getPosts = async (): Promise<Post[]> => {
-  const data = await fetch(`${BASE_API_URL}/posts?_limit=10`);
-  return data.json();
+const getBlogEntries = async (): Promise<BlogQueryResult> => {
+  const entries = await client.getEntries({ content_type: "blog" });
+  return entries;
 };
 
 export default async function Blog() {
-  const posts = await getPosts();
+  const blogEntries = await getBlogEntries();
   return (
-    <main className="flex flex-col items-center min-h-screen max-w-5xl m-auto p-10">
-      <h1 className="text-3xl font-bold p-10">Blog Index Page</h1>
-      <ul className="flex flex-col gap-8">
-        {posts.map((post) => (
-          <li key={post.id}>
-            <Link href={`blog/${post.id}`}>
-              <span className="text-2xl text-purple-500">
-                Post {post.title}
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 ">
+      {blogEntries.items.map((singlePost) => {
+        const { slug, title, date } = singlePost.fields;
+        return (
+          <div key={slug} className="flex flex-col bg-sky-200 p-4 rounded-xl shadow-lg mb-16">
+            <Link href={`/blog/${slug}`}>
+              <h2 className="font-extrabold text-xl hover:text-blue-500 transition-colors mb-4">{title}</h2>
+              <span>
+                Posted on{" "}
+                {new Date(date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
               </span>
             </Link>
-          </li>
-        ))}
-      </ul>
+          </div>
+        );
+      })}
     </main>
   );
 }

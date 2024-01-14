@@ -2,11 +2,16 @@ import React from 'react'
 import Image from 'next/image'
 import cardPicture from '@/public/jason-goodman-Oalh2MojUuk-unsplash.jpg'
 import Link from 'next/link'
-type Props = {}
+
+interface BlogInviteCardProps {
+   name: string;
+   header: string;
+   review: string;
+ }
 
 
 
-export default function BlogInviteCard(){
+export default function BlogInviteCard({name, header,review}:BlogInviteCardProps){
     return(
 
         <div className="lg:p-4 md:w-full flex justify-center">
@@ -16,12 +21,12 @@ export default function BlogInviteCard(){
            alt = "card-picture"
            />
            <div className="px-6 py-4">
-             <span className="tracking-widest text-xs title-font font-medium text-gray-400 mb-2">John Doe</span>
+             <span className="tracking-widest text-xs title-font font-medium text-gray-400 mb-2">{name}</span>
              <div className="title-font text-lg font-medium mb-2">
-              <Link href={"#"}>What we learned from starting a webshop</Link>
+              <Link href={"#"}>{header}</Link>
              </div>
              <p>
-             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+               {review}
              </p>
            </div>
            <div className="px-6 pt-4 pb-2">

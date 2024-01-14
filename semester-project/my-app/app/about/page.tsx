@@ -29,7 +29,7 @@ export default function About() {
         </div>
       </div>
 
-      <div className="w-full flex mt-8 xs:flex-col sm:flex-col md:flex-row" >
+      <div className="w-full flex mt-8 xs:flex-col-reverse md:flex-row" >
         <div className="flex flex-row">
           <Image
             src={secondImage}
