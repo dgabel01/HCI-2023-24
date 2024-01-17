@@ -1,6 +1,6 @@
 "use client"
 import { useProductContext } from "@/context/ProductContext";
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 
 const Add = () => {
   const [title, setTitle] = useState("");
@@ -8,20 +8,26 @@ const Add = () => {
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const [category, setCategory] = useState("");
+  const [lastGeneratedId, setLastGeneratedId] = useState(-1);
+
 
 
   const { addProduct } = useProductContext();
 
   const add = () => {
     setLoading(true);
-    const generatedId = Math.random();
+    const generatedId = lastGeneratedId + 1;
     console.log('Generated Product ID:', generatedId);
+    setLastGeneratedId(generatedId); 
+
     addProduct({
       id: generatedId,
       title: title,
       price: price,
       description: description,
       images: "",
+      category:category
     });
 
     setTimeout(() => {
@@ -29,6 +35,7 @@ const Add = () => {
       setTitle("");
       setPrice(0);
       setDescription("");
+      setCategory("");
       setSuccessMessage("Product added successfully!");
 
       // Clear success message after 2 seconds
@@ -68,9 +75,25 @@ const Add = () => {
           className="border-2 rounded-lg mx-2 p-1"
         />
       </label>
+      <label>
+       Category
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="border-2 rounded-lg mx-2 p-1"
+        >
+          <option value="Select category:">Select category:</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Clothing">Clothing</option>
+          <option value="Home and Garden">Home and Garden</option>
+        </select>
+      </label>
+      
+
       <button className="col-span-2 w-52 place-self-center border-2 rounded-lg bg-sky-200" onClick={add}>
         {loading? "Adding product...":"Send"}
       </button>
+
 
       <div className="col-span-2 text-green-500 mt-2 animate-pulse text-center">
         <p>{successMessage}</p>

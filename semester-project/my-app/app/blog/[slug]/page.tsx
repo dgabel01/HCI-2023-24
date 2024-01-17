@@ -39,12 +39,14 @@ export default async function BlogPage(props: BlogPageProps) {
   const { slug } = params;
   const article = await fetchBlogPost(slug);
   const { title, date, content } = article.fields;
+  //console.log(article.fields);
 
   return (
     <main className="min-h-screen p-24 flex justify-center">
-      <div className="max-w-2xl">
-        <h1 className="font-extrabold text-3xl mb-2">{title}</h1>
-
+      <div className="max-w-2xl text-center">
+        <p>Slika</p>
+        <h1 className="font-extrabold text-3xl mb-8">{title}</h1>
+        <p>Autor</p>
         <p className="mb-6 text-slate-400 ">
           Posted on{" "}
           {new Date(date).toLocaleDateString("en-US", {
@@ -56,6 +58,7 @@ export default async function BlogPage(props: BlogPageProps) {
         <div className="[&>p]:mb-8 [&>h2]:font-extrabold">
           {documentToReactComponents(content)}
         </div>
+        <p>Video i code snippet</p>
       </div>
     </main>
   );

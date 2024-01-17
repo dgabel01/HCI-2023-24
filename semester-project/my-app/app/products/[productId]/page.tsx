@@ -1,52 +1,40 @@
-// pages/products/[id].tsx
-/*import { useProductContext } from '@/context/ProductContext';
-import { Product } from '@/app/products/page';
-import  P  from 'next/dist/server/next';
+// ./app/products/[productId]/page.tsx
+/*"use client"
+import React from "react";
+import { useRouter } from "next/router";
+import { useProductContext } from "@/context/ProductContext";
 
-interface ProductDetailProps {
-  product: Product;
-}
-
-export async function load({ params }: { params: typeof P }) {
-  const productId = params.id as string;
+const ProductPage = () => {
+  const router = useRouter();
   const { products } = useProductContext();
-  console.log('Fetched products:', products);
-  const product = products.find((p) => p.id === Number(productId));
+  const productId = parseInt(router.query.productId as string, 10);
+
+  // Find the product with the matching ID
+  const product = products.find((p) => p.id === productId);
 
   if (!product) {
-    console.error('Product not found. Product ID:', productId);
-    throw new Error('Product not found');
-  }
-
-  return {
-    props: {
-      product,
-    },
-  };
-}
-
-const ProductDetailPage = ({ product }: ProductDetailProps) => {
-  if (!product) {
-    console.error('Product not found. Product:', product);
-    return <p>Product not found</p>;
+    // Product not found
+    return <div>Product not found</div>;
   }
 
   return (
-    <div>
-      <h1>{product.title}</h1>
-      <p>{product.description}</p>
-      <p>{product.price} &euro;</p>
+    <div className="flex flex-col items-center justify-center p-4">
+      <h1 className="text-3xl font-bold">{product.title}</h1>
+      <p className="text-lg mb-4">Price: ${product.price}</p>
+      <p className="text-gray-700">{product.description}</p>
+      <img src={product.images} alt={product.title} className="mt-4 max-w-md" />
+      <p className="mt-4">Category: {product.category}</p>
     </div>
   );
 };
 
-export default ProductDetailPage;*/
+export default ProductPage;*/
 
 import React from 'react'
 
 const page = () => {
   return (
-    <div>removed for vercel</div>
+    <div>single product page</div>
   )
 }
 
