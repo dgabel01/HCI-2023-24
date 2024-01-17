@@ -43,12 +43,12 @@ export default async function Blog() {
     </div>
 
 
-    <main className="flex flex-col justify-center items-center gap-24 p-4 md:p-8 lg:p-12">
+    <main className="flex flex-col justify-center items-center gap-24 xs:m-auto lg:p-12">
         {blogEntries.items.map((singlePost) => {
           const { slug, title, date } = singlePost.fields;
           return (
             <div
-              className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/4 m-4"
+              className=" xs:w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/4 m-4"
               key={slug}
             >
               <div className="max-w-sm rounded-2xl overflow-hidden shadow-lg">

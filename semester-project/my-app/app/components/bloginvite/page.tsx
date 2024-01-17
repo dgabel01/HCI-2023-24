@@ -24,7 +24,7 @@ export default async function BlogInvite (){
         <p className="mt-4 mb-8 text-xl text-center xs:text-md mx-2 mt-4md:text-xl">Discover the Latest Insights and Expert Perspectives</p>
       </div>
 
-      <main className="flex flex-wrap justify-center p-4 md:p-8 lg:p-12">
+      <main className="flex flex-wrap justify-center gap-12 p-4 md:p-8 lg:p-12">
         {blogEntries.items.map((singlePost) => {
           const { slug, title, date } = singlePost.fields;
           return (

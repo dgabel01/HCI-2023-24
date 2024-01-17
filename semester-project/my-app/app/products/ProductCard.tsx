@@ -13,7 +13,7 @@ const ProductCard = ({ product }: IProps) => {
       <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
       <div className="card-body">
         <h2 className="card-title">{product.title}</h2>
-        <p className='text-sm rounded-xl bg-stone-200 w-20 p-2'>{product.category}</p>
+        <p className='text-sm rounded-xl bg-stone-200 w-24 p-2'>{product.category}</p>
         <p>{product.description}</p>
         <div className="card-actions justify-end">
           <p>{product.price}&euro;</p>

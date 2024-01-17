@@ -64,11 +64,11 @@ const Products = ()=> {
      <h1 className="text-2xl sm:text-3xl font-bold p-4 sm:p-10">Find the best products</h1>
       <p className="mb-6 text-xl">Explore tech, clothing and more</p>
 
-      <div className="flex flex-col sm:flex-row items-center justify-center mb-8">
-        <div className="flex flex-wrap items-row justify-start sm:justify-between gap-2 mb-2 sm:mb-0">
+      <div className="flex xs:flex-col md:flex-row items-center justify-center mb-8">
+        <div className="flex xs:flex-col md:flex-row justify-start sm:justify-between gap-2 mb-2 sm:mb-4">
         <button
             onClick={() => handleCategoryClick("Electronics")}
-            className={`rounded-xl border-2 py-2 px-1 hidden sm:block hover:shadow-lg cursor-pointer ${
+            className={`rounded-xl border-2 py-2 px-1 sm:block hover:shadow-lg cursor-pointer ${
               selectedCategories.includes("Electronics") ? "bg-cyan-500" : ""
             }`}
           >
@@ -77,7 +77,7 @@ const Products = ()=> {
 
            <button
             onClick={() => handleCategoryClick("Clothing")}
-            className={`rounded-xl border-2 py-2 px-1 hidden sm:block hover:shadow-lg cursor-pointer ${
+            className={`rounded-xl border-2 py-2 px-1 sm:block hover:shadow-lg cursor-pointer ${
               selectedCategories.includes("Clothing") ? "bg-cyan-500" : ""
             }`}
           >
@@ -86,7 +86,7 @@ const Products = ()=> {
 
           <button
             onClick={() => handleCategoryClick("Home and Garden")}
-            className={`rounded-xl border-2 py-2 px-1 hidden sm:block hover:shadow-lg cursor-pointer ${
+            className={`rounded-xl border-2 py-2 px-1 sm:block hover:shadow-lg cursor-pointer ${
               selectedCategories.includes("Home and Garden") ? "bg-cyan-500" : ""
             }`}
           >
