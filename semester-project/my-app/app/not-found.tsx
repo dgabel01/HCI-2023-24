@@ -21,8 +21,8 @@ export default function NotFound() {
           height={300}
         />
         <div className='flex flex-col items-center justify-center gap-12 text-xl text-center'>
-          <p>The page you were looking for was moved or doesn't exist.</p>
-          <p>Let's get you back.</p>
+          <p>The page you were looking for was moved or doesn&apos;t exist.</p>
+          <p>Let&apos;s get you back.</p>
           <Link href={`/`}>Go back</Link> 
         </div>
       </div>
