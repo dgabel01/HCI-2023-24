@@ -2,16 +2,20 @@
 import React, {useState} from 'react'
 import Image from "next/image"
 import heroimg from "@/public/hero-contact-f6fac17c.webp"
-import { IoIosSend } from "react-icons/io";
 import customerserviceimg from "@/public/Customer-Service-Management.png"
 import Form from './components/form';
-
-
+import Head from 'next/head';
 
 
 export default function Contact() {
   return (
+    
 <main className="flex flex-col items-center justify-center">
+  <Head>
+    <title>Contact Us</title>
+    <meta name="description" content="Page for EasyShop customer support" />
+  </Head>
+
   <div className="relative w-full">
       {/* Hero Image */}
       <div className="w-full h-0" style={{ paddingBottom: "8%",}}>

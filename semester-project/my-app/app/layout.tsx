@@ -9,11 +9,8 @@ import ProductContextProvider from '@/context/ProductContextProvider';
 
 export const metadata: Metadata = {
   title: 'EasyShop',
-  description: 'HCI college course project',
+  description: 'HCI college course project root layout ',
 }
-
-
-
 
 export default function RootLayout({
   children,

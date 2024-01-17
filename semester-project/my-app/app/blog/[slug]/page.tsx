@@ -1,6 +1,13 @@
 import { BlogItem } from "@/app/types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { createClient } from "contentful";
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'EasyShop Blog',
+  description: 'Page where the EasyShop team posts new blog entries',
+}
+
 
 const client = createClient({
   space: process.env.SPACE_ID || "",

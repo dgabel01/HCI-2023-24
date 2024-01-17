@@ -6,7 +6,12 @@ import thirdImage from '@/public/ceo-chief-executive-officer-cartoon-illustratio
 import Footer from "../components/footer/page";
 import TestimonialCard from "./components/testimonialcard";
 import Steps from "./components/steps";
+import type { Metadata } from 'next'
 
+export const metadata: Metadata = {
+  title: 'About Us',
+  description: 'Information about the history and purpose of EasyShop',
+}
 
 
 

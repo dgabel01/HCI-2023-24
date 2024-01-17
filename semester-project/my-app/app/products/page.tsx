@@ -5,6 +5,7 @@ import { PureComponent } from "react";
 import { IoBuildOutline } from "react-icons/io5";
 import { useProductContext } from "@/context/ProductContext";
 import ProductCard from "./ProductCard";
+import Head  from "next/head";
 
 //add category tag
 export interface Product {
@@ -61,6 +62,10 @@ const Products = ()=> {
   return(
   
    <main className="flex flex-col items-center min-h-screen max-w-5xl m-auto p-4 sm:justify-center">
+    <Head>
+      <title>Products</title>
+      <meta name="description" content="Listed products for sale" />  
+    </Head>
      <h1 className="text-2xl sm:text-3xl font-bold p-4 sm:p-10">Find the best products</h1>
       <p className="mb-6 text-xl">Explore tech, clothing and more</p>
 

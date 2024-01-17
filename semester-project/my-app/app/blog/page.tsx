@@ -5,6 +5,12 @@ import Image from "next/image";
 import heroImage from "@/public/hero-illustration.png"
 import getStartedPic from "@/public/hands-holding-tablet-with-forefinger-clicking-start-button-new-application-launch-flat-illustration_74855-20595.png"
 import cardPicture from "@/public/jason-goodman-Oalh2MojUuk-unsplash.jpg" 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'EasyShop Blog',
+  description: 'Page where the EasyShop team posts new blog entries',
+}
 
 
 const client = createClient({

@@ -5,7 +5,7 @@
 
 **Status:**
 
-- CMS blog posts added, search products by title and description added, filter product by categories added
+- CMS blog posts added, search products by title and description added, filter product by categories added, custom 404 page added, metadata added
 
 
 **Problems:**
