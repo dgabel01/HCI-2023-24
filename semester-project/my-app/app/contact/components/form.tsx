@@ -137,7 +137,7 @@ const Form: React.FC = () => {
         {loading ? 'Sending...' : 'Send'}
       </button>
       </div>
-      <div className="col-span-2 text-green-500 mt-2 animate-pulse text-center text-xl">
+      <div className="col-span-2 text-green-500 m-24 animate-pulse text-center text-xl">
         <p>{successMessage}</p>
       </div>
     </div>

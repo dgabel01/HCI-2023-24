@@ -20,8 +20,8 @@ export default async function BlogInvite (){
   return (
     <>
       <div className="flex flex-col items-center mt-8">
-        <h1 className="font-bold text-3xl title-font xs:text-xl md:text-3xl">Explore Our Insightful Blog</h1>
-        <p className="mt-4 mb-8 text-xl text-center xs:text-md mx-2 mt-4md:text-xl">Discover the Latest Insights and Expert Perspectives</p>
+        <h1 className="font-bold text-3xl title-font xs:text-xl md:text-3xl">Explore Our Insightful <Link href={`/blog`}>Blog</Link></h1>
+        <p className="mt-4 mb-8 text-xl text-center xs:text-md mx-2 mt-4md:text-xl">Discover the Latest Posts from the EasyShop Team</p>
       </div>
 
       <main className="flex flex-wrap justify-center gap-12 p-4 md:p-8 lg:p-12">

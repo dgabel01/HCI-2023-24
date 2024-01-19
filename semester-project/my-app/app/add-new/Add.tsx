@@ -82,7 +82,7 @@ const Add = () => {
           onChange={(e) => setCategory(e.target.value)}
           className="border-2 rounded-lg mx-2 p-1"
         >
-          <option value="Select category:">Select category:</option>
+          <option value="Select category:">Select product category:</option>
           <option value="Electronics">Electronics</option>
           <option value="Clothing">Clothing</option>
           <option value="Home and Garden">Home and Garden</option>
@@ -90,12 +90,12 @@ const Add = () => {
       </label>
       
 
-      <button className="col-span-2 w-52 place-self-center border-2 rounded-lg bg-sky-200" onClick={add}>
-        {loading? "Adding product...":"Send"}
+      <button className="col-span-2 w-52 place-self-center border-2 rounded-lg bg-sky-200 hover:bg-green-400" onClick={add}>
+        {loading? "Adding product...":"Add your product"}
       </button>
 
 
-      <div className="col-span-2 text-green-500 mt-2 animate-pulse text-center">
+      <div className="col-span-2 text-green-500 mt-2 animate-pulse text-center text-xl">
         <p>{successMessage}</p>
       </div>
 

@@ -55,7 +55,12 @@ const Products = ()=> {
 
   if(products.length===0){
     return(
-      <h1 className="text-center text-red-500 p-5 font-bold text-2xl my-12">No products added yet!</h1>
+      <>
+        <div className="flex flex-col items-center justify-center mb-24">
+          <h1 className="text-center text-red-500 p-5 font-bold text-2xl mt-16">No products added yet!</h1>
+          <Link href={`/add-new`}><p className="text-lg hover:text-green-500">Click here to list your products for sale</p></Link>
+        </div>
+      </>
     );
   }
 
@@ -69,12 +74,12 @@ const Products = ()=> {
      <h1 className="text-2xl sm:text-3xl font-bold p-4 sm:p-10">Find the best products</h1>
       <p className="mb-6 text-xl">Explore tech, clothing and more</p>
 
-      <div className="flex xs:flex-col md:flex-row items-center justify-center mb-8">
+      <div className="flex xs:flex-col md:flex-row items-center justify-center mb-12">
         <div className="flex xs:flex-col md:flex-row justify-start sm:justify-between gap-2 mb-2 sm:mb-4">
         <button
             onClick={() => handleCategoryClick("Electronics")}
             className={`rounded-xl border-2 py-2 px-1 sm:block hover:shadow-lg cursor-pointer ${
-              selectedCategories.includes("Electronics") ? "bg-cyan-500" : ""
+              selectedCategories.includes("Electronics") ? "bg-cyan-500 dark:bg-stone-200" : ""
             }`}
           >
             Electronics
@@ -83,7 +88,7 @@ const Products = ()=> {
            <button
             onClick={() => handleCategoryClick("Clothing")}
             className={`rounded-xl border-2 py-2 px-1 sm:block hover:shadow-lg cursor-pointer ${
-              selectedCategories.includes("Clothing") ? "bg-cyan-500" : ""
+              selectedCategories.includes("Clothing") ? "bg-cyan-500 dark:bg-stone-200" : ""
             }`}
           >
             Clothing
@@ -92,7 +97,7 @@ const Products = ()=> {
           <button
             onClick={() => handleCategoryClick("Home and Garden")}
             className={`rounded-xl border-2 py-2 px-1 sm:block hover:shadow-lg cursor-pointer ${
-              selectedCategories.includes("Home and Garden") ? "bg-cyan-500" : ""
+              selectedCategories.includes("Home and Garden") ? "bg-cyan-500 dark:bg-stone-200" : ""
             }`}
           >
             Home and Garden
@@ -101,12 +106,12 @@ const Products = ()=> {
           
           <button
             onClick={clearFilters}
-            className="rounded-xl border-2 py-2 px-1 bg-red-300 hover:shadow-lg cursor-pointer"
+            className="mr-8 rounded-xl border-2 py-2 px-1 bg-red-300 dark:bg-red-500 text-black hover:shadow-lg cursor-pointer"
           >
             Clear Filters
         </button>
         </div>
-        <div className="ml-0 sm:ml-12 mt-2 sm:mt-0 flex items-row gap-2">
+        <div className="flex items-row gap-2 xs:m-0 md:mb-4 ">
           <input
             type="text"
             name=""
@@ -122,10 +127,16 @@ const Products = ()=> {
 
 
       <div className="flex flex-wrap gap-12 items-center justify-center">
-        {filteredProducts.map((product) => (
+      {filteredProducts.length === 0 ? (
+        <p className="text-red-500 text-lg font-bold">
+          No products matching inputted title and description
+        </p>
+      ) : (
+        filteredProducts.map((product) => (
           <ProductCard product={product} key={product.id}></ProductCard>
-        ))}
-      </div>
+        ))
+      )}
+    </div>
 
 
 

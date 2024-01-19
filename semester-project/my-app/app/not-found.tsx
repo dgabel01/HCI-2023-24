@@ -23,7 +23,7 @@ export default function NotFound() {
         <div className='flex flex-col items-center justify-center gap-12 text-xl text-center'>
           <p>The page you were looking for was moved or doesn&apos;t exist.</p>
           <p>Let&apos;s get you back.</p>
-          <Link href={`/`}>Go back</Link> 
+          <Link href={`/`} className='hover:text-green-500'>Go back</Link> 
         </div>
       </div>
 
