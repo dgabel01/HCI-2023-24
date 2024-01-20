@@ -18,9 +18,13 @@ const client = createClient({
   accessToken: process.env.ACCESS_TOKEN || "",
 });
 
+
+
+
 const getBlogEntries = async (): Promise<BlogQueryResult> => {
   const entries = await client.getEntries({ content_type: "blog" });
   return entries as unknown as BlogQueryResult;
+
 };
 
 export default async function Blog() {
@@ -51,7 +55,13 @@ export default async function Blog() {
 
     <main className="flex flex-col justify-center items-center gap-24 xs:m-auto lg:p-12">
         {blogEntries.items.map((singlePost) => {
-          const { slug, title, date } = singlePost.fields;
+          const { slug, title, date, image, author } = singlePost.fields;
+
+          
+         //console.log(singlePost)
+          /*console.log("Image field:")
+          console.log(singlePost.fields.image);*/
+
           return (
             <div
               className=" xs:w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/4 m-4"
@@ -66,6 +76,9 @@ export default async function Blog() {
                 <div className="px-6 py-4">
                   <p className="tracking-widest text-xs title-font font-medium text-gray-400 mb-2">
                     {title}
+                  </p>
+                  <p>
+                    By: {author}
                   </p>
                   <div className="title-font text-lg font-medium mb-2"></div>
                   <span>

@@ -18,6 +18,9 @@ const ProductCard = ({ product }: IProps) => {
         <div className="card-actions justify-end">
           <p>{product.price}&euro;</p>
           <button className="btn btn-primary">Buy Now</button>
+          {/*<Link href={`/products/${product.id}`}>
+                <button className="btn btn-primary">Buy Now</button>
+          </Link>*/}
         </div>
       </div>
     </div>

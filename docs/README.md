@@ -1,3 +1,3 @@
 # Project report
 
-Project documentation.
+Project documentation and final report.

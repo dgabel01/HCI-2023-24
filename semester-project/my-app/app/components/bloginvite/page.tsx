@@ -26,7 +26,7 @@ export default async function BlogInvite (){
 
       <main className="flex flex-wrap justify-center gap-12 p-4 md:p-8 lg:p-12">
         {blogEntries.items.map((singlePost) => {
-          const { slug, title, date } = singlePost.fields;
+          const { slug, title, date, author } = singlePost.fields;
           return (
             <div
               className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/4 m-4"
@@ -42,7 +42,7 @@ export default async function BlogInvite (){
                   <p className="tracking-widest text-xs title-font font-medium text-gray-400 mb-2 truncate">
                     {title}
                   </p>
-                  <div className="title-font text-lg font-medium mb-2"></div>
+                  <p>By: {author}</p>
                   <span>
                     Posted on{" "}
                     {new Date(date).toLocaleDateString("en-US", {

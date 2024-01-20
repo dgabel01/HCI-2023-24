@@ -54,7 +54,7 @@ export default function About() {
       <div className="w-3/4 mx-auto flex flex-col items-center justify-center mt-16 p-4 mb-36 p-24">
         <h2 className="text-2xl font-extrabold mb-4 text-center">OUR MISSION</h2>
         <h1 className="text-3xl font-extrabold mb-2 text-center">Making commerce better for everyone</h1>
-        <p className="text-xl text-center">We help peo3ple achieve independence by making it easier to start, run, and grow their product sales.</p>
+        <p className="text-xl text-center">We help people achieve independence by making it easier to start, run, and grow their product sales.</p>
         <p className="text-xl text-center">We believe the future of commerce has more voices, not fewer, so we are reducing the barriers to business ownership to make commerce better for everyone.</p>
       </div>
       

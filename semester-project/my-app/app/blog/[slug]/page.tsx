@@ -45,15 +45,15 @@ export default async function BlogPage(props: BlogPageProps) {
   const { params } = props;
   const { slug } = params;
   const article = await fetchBlogPost(slug);
-  const { title, date, content } = article.fields;
-  //console.log(article.fields);
+  const { title, date, content, image,author} = article.fields;
+  //console.log(article.fields.image);
 
   return (
     <main className="min-h-screen p-24 flex justify-center">
       <div className="max-w-2xl text-center">
         <p>Slika</p>
         <h1 className="font-extrabold text-3xl mb-8">{title}</h1>
-        <p>Autor</p>
+        <p>By:{author}</p>
         <p className="mb-6 text-slate-400 ">
           Posted on{" "}
           {new Date(date).toLocaleDateString("en-US", {
