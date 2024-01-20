@@ -3,7 +3,7 @@ import Image from "next/image";
 import firstImage from "@/public/Top-10-Ranking-About-Us-Pages.webp"
 import secondImage from '@/public/creative-team-people-working-project_278596-2.png'
 import thirdImage from '@/public/ceo-chief-executive-officer-cartoon-illustration-businessman-work_2175-4836.jpg'
-import Footer from "../components/footer/page";
+import Footer from "../../components/footer/page";
 import TestimonialCard from "./components/testimonialcard";
 import Steps from "./components/steps";
 import type { Metadata } from 'next'

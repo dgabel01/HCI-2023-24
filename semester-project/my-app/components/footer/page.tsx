@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import footerLogo from "@/app/logo-color.png"
-import footerLogo2 from "@/app/logo-white.png"
+import footerLogo from "@/public/logo-color.png"
+import footerLogo2 from "@/public/logo-white.png"
 import { SiGithub } from "react-icons/si";
 
 export default function Footer() {

@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import logoImage from "../logo-color.png"
+import logoImage from "@/public/logo-white.png"
 
-export default function HamburgerLogo() {
+export default function HeaderLogo() {
     return (
         <Link href="/">
-        <Image className="mix-blend-darken"
+        <Image className="mix-blend-lighten"
             src={logoImage}
             alt="Logo"
-            width={90} 
+            width={135} 
             height={40} 
         />
         </Link>
