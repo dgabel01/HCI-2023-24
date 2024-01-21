@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 
 const page = () => {
   return (
@@ -6,9 +6,9 @@ const page = () => {
   )
 }
 
-export default page;
+export default page;*/
 
-/*"use client"
+"use client"
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { useProductContext } from "@/context/ProductContext";
@@ -17,7 +17,7 @@ import { Product } from '../page';
 const SingleProductPage = () => {
   const searchParams = useSearchParams();
   const productId = searchParams.get('productId');
-  console.log(productId)
+  //console.log(productId)
   const { products } = useProductContext();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
@@ -47,4 +47,4 @@ const SingleProductPage = () => {
   );
 };
 
-export default SingleProductPage;*/
+export default SingleProductPage;

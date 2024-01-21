@@ -9,7 +9,7 @@ const Add = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [category, setCategory] = useState("");
-  const [lastGeneratedId, setLastGeneratedId] = useState(-1);
+  const [lastGeneratedId, setLastGeneratedId] = useState(0);
   const [message, setMessage] = useState("")
 
 
@@ -18,7 +18,7 @@ const Add = () => {
   const add = () => {
     if (!title || isNaN(price) || price <= 0) {
       // Show a message element
-      setMessage("Please provide a price and product description.");
+      setMessage("Please provide a product title and price.");
       setTimeout(() => {
         setMessage("");
       }, 5000);
@@ -56,7 +56,7 @@ const Add = () => {
 
   return (
     <>
-    <div className="flex items-center justify-center my-12 text-orange-300 animate-pulse">
+    <div className="flex items-center justify-center my-12 text-orange-300 animate-pulse text-xl">
       {message}
     </div>
 

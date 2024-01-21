@@ -12,7 +12,10 @@ const ProductContextProvider = ({ children }: IProps) => {
     const[products, setProducts] = useState<Product[]>([]);
 
     const addProduct =(product:Product)=>{
-        product.id = products.length;
+        /*console.log(product.id)
+        console.log("Provider id:")
+        console.log(product.id)
+        console.log(product)*/
         setProducts([...products, product]);
     }
  

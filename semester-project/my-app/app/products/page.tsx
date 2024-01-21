@@ -4,7 +4,6 @@ import Link from "next/link";
 import { PureComponent } from "react";
 import { IoBuildOutline } from "react-icons/io5";
 import { useProductContext } from "@/context/ProductContext";
-import ProductCard from "./ProductCard";
 import Head  from "next/head";
 
 //add category tag
@@ -133,7 +132,23 @@ const Products = ()=> {
         </p>
       ) : (
         filteredProducts.map((product) => (
-          <ProductCard product={product} key={product.id}></ProductCard>
+          <Link href={`/products/${product.id}`}>
+              <div className="card w-96 bg-base-100 shadow-xl mx-4 xs:w-64 md:w-96">
+              <figure><img src="https://images.pexels.com/photos/2536965/pexels-photo-2536965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Stock photo" /></figure>
+              <div className="card-body">
+                <h2 className="card-title">{product.title}</h2>
+                <p className='text-sm rounded-xl bg-stone-200 w-24 p-2'>{product.category}</p>
+                <p>{product.description}</p>
+                <div className="card-actions justify-end">
+                  <p>{product.price}&euro;</p>
+                  <button className="btn btn-primary">Buy Now</button>
+                  {/*<Link href={`/products/${product.id}`}>
+                        <button className="btn btn-primary">Buy Now</button>
+                  </Link>*/}
+                </div>
+              </div>
+            </div>
+         </Link>
         ))
       )}
     </div>
