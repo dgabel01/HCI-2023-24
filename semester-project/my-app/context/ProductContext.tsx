@@ -10,7 +10,7 @@ interface IProductContext{
 
 export const ProductContext = createContext<IProductContext>({
     products:[],
-    addProduct(product){},
+    addProduct: ()=>{},
 });
 
 

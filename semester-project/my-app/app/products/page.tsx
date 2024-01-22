@@ -12,8 +12,8 @@ export interface Product {
   title: string;
   price:number;
   description:string;
-  images:string;
-  category:string
+  images:string | null;
+  category:string;
 }
 
 const Products = ()=> {
@@ -132,6 +132,7 @@ const Products = ()=> {
         </p>
       ) : (
         filteredProducts.map((product) => (
+          
           <Link href={`/products/${product.id}`} key={product.id}>
               <div className="card w-96 bg-base-100 shadow-xl mx-4 xs:w-64 md:w-96">
               <figure><img src="https://images.pexels.com/photos/2536965/pexels-photo-2536965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Stock photo" /></figure>
@@ -142,9 +143,6 @@ const Products = ()=> {
                 <div className="card-actions justify-end">
                   <p>{product.price}&euro;</p>
                   <button className="btn btn-primary">Buy Now</button>
-                  {/*<Link href={`/products/${product.id}`}>
-                        <button className="btn btn-primary">Buy Now</button>
-                  </Link>*/}
                 </div>
               </div>
             </div>

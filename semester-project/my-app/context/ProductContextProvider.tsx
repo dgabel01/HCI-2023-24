@@ -10,13 +10,16 @@ interface IProps{
 const ProductContextProvider = ({ children }: IProps) => {
 
     const[products, setProducts] = useState<Product[]>([]);
+    const [lastGeneratedId, setLastGeneratedId] = useState<number>(0);
 
     const addProduct =(product:Product)=>{
         /*console.log(product.id)
         console.log("Provider id:")
         console.log(product.id)
         console.log(product)*/
-        setProducts([...products, product]);
+        const generatedId = lastGeneratedId + 1;
+        setLastGeneratedId(generatedId);
+        setProducts([...products, { ...product, id: generatedId }]);
     }
  
 

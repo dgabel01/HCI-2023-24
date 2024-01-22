@@ -27,7 +27,9 @@ const Add = () => {
     setLoading(true);
     const generatedId = lastGeneratedId + 1;
     console.log('Generated Product ID:', generatedId);
-    setLastGeneratedId(generatedId); 
+    setLastGeneratedId(generatedId);
+
+  
 
     addProduct({
       id: generatedId,
@@ -101,6 +103,7 @@ const Add = () => {
       <option value="Home and Garden">Home and Garden</option>
     </select>
   </label>
+
 
   <button className="w-52 border-2 rounded-lg bg-sky-200 hover:bg-green-400" onClick={add}>
     {loading ? "Adding product..." : "Add your product"}
