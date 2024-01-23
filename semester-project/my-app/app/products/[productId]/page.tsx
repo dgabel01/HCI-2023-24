@@ -8,16 +8,26 @@ const SingleProductPage = () => {
   const params = useParams();
   const productId = params.productId;
   //console.log(productId)
-  const { products } = useProductContext();
+  const { products, addToCart, cart } = useProductContext();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [incart, setInCart] = useState(false);
 
   useEffect(() => {
     const foundProduct = products.find(product => String(product.id) === String(productId));
-
     setSelectedProduct(foundProduct || null);
-    //console.log(foundProduct);
 
-  }, [productId, products]);
+    // Check if the selected product is in the cart
+    const isInCart = cart.some(product => product.id === foundProduct?.id);
+    setInCart(isInCart);
+
+  }, [productId, products, cart]);
+
+  const handleAddToCart = () => {
+    if (selectedProduct) {
+      addToCart(selectedProduct);
+      setInCart(true);
+    }
+  };
 
 
   return (
@@ -37,8 +47,10 @@ const SingleProductPage = () => {
                     </div>
                   </div>
                </div>
-               <button className="btn btn-primary mt-8">Add to Cart</button>
-           </main>
+               <button className={`btn btn-primary mt-8 ${incart ? 'disabled' : ''}`} onClick={handleAddToCart} disabled={incart}>
+                {incart ? 'Product added to Shopping Cart' : 'Add to Shopping Cart'}
+              </button>           
+            </main>
         </>
       ) : (
         <p>Loading product...</p>

@@ -32,7 +32,7 @@ export default function Footer() {
 					<ul>
 						<p className="text-white font-bold text-2xl pb-4">Services</p>
 						<li className="text-white text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
-							Marketplace
+							<Link href={"/products"}>Marketplace</Link>
 						</li>
 						<li className="text-white text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
 							<Link href={"/blog"}>Blog</Link>
