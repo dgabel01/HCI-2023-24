@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import { useProductContext } from '@/context/ProductContext';
 import { Product } from "@/app/products/page";
 import Image from 'next/image';
+import Head from 'next/head';
 
 interface ProductQuantities {
   [productId: string]: number;
@@ -12,6 +13,7 @@ export default function ShoppingCart() {
   let { cart } = useProductContext();
   const [productQuantities, setProductQuantities] = useState<ProductQuantities>({});
   const [orderStatus, setOrderStatus] = useState<string | null>(null);
+  const [processing, setProcessing] = useState(false);
 
   const subtotal = cart.reduce((acc, product) => {
     return acc + (product.price * (productQuantities[product.id] || 0));
@@ -30,21 +32,28 @@ export default function ShoppingCart() {
 
   const handleOrderClick = () => {
     const anyProductCountAboveZero = cart.some((product) => productQuantities[product.id] > 0);
-  
     if (anyProductCountAboveZero) {
-      setOrderStatus('Thank you for your order');
-  
+          setProcessing(true);
+      
       setTimeout(() => {
         cart.length = 0;
         setOrderStatus('Cart is empty');
-      }, 7500);
+      }, 6500);
+      setOrderStatus('Thank you for your order!');
+
     } else {
-      setOrderStatus('Please add items to your cart before placing an order.');
+      setOrderStatus('Product count(s) must be at least 1 (one)');
     }
   };
 
   return (
+    
     <>
+     <Head>
+        <title>Shopping Cart</title>
+        <meta name="description" content="Page for purchasing products added to shopping cart" />
+      </Head>
+      
       <div className="flex items-center justify-center mt-8">
         <p className='text-2xl font-bold '>Shopping cart</p>
       </div>
@@ -59,17 +68,17 @@ export default function ShoppingCart() {
                   height={100}
                   alt='product-pic'
                 />
-                <h3 className='mb-2'>{product.title}</h3>
-                <p className='mb-2'>{product.description}</p>
-                <p>Price: {product.price}&euro;</p>
+                <h3 className='mb-2 mt-2 xs:text-center md:text-left'>{product.title}</h3>
+                <p className='mb-2 xs:text-center md:text-left'>{product.description}</p>
+                <p className='xs:text-center md:text-left'>Price: {product.price}&euro;</p>
               </div>
-              <div className='flex flex-col '>
+              <div className='flex flex-col mb-12 ml-4'>
                 <p>Count: {productQuantities[product.id] || 0}</p>
                 <button
                   onClick={() =>
                     updateProductQuantity(product.id, (productQuantities[product.id] || 0) + 1)
                   }
-                  className=' mb-4 p-1 bg-stone-200 mr-2'
+                  className=' mb-4 p-1 bg-stone-200 '
 
                 >
                   +
@@ -82,7 +91,7 @@ export default function ShoppingCart() {
                 >
                   -
                 </button>
-                <div className='mt-4 sm:mt-0'>
+                <div className='mt-4 sm:mt-8'>
                   Total:{product.price * (productQuantities[product.id] || 0)} &euro;
                 </div>
               </div>
@@ -96,12 +105,12 @@ export default function ShoppingCart() {
             <p>Subtotal: {subtotal}&euro;</p>
             {allCountsAboveZero && <p>Shipping: {shipping}&euro;</p>}
             <p>Total price: {subtotal + (allCountsAboveZero ? shipping : 0)}&euro;</p>
-            <button className="btn btn-success" onClick={handleOrderClick}>Order</button>
-            {orderStatus && <p>{orderStatus}</p>}
+            <button className="btn btn-success" onClick={handleOrderClick}>{processing? "Ordering...": "Order"}</button>
+            {orderStatus && <p className='text-xl text-green-500 animate-pulse'>{orderStatus}</p>}
           </div>
         </div>
       ) : (
-        <p className='text-xl text-center'>Your cart is empty</p>
+        <p className='text-xl text-center mt-8'>Your cart is empty</p>
       )}
     </>
   );

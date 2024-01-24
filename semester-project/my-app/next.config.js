@@ -10,6 +10,7 @@ const nextConfig = {
         "source.unsplash.com",
         "images.ctfassets.net",
         "images.pexels.com" ,
+        "grasphelp.org",
       ],
     },
   };

@@ -56,12 +56,12 @@ export default async function Blog() {
     <main className="flex flex-col justify-center items-center gap-24 xs:m-auto lg:p-12">
         {blogEntries.items.map((singlePost) => {
           const { slug, title, date, image, author } = singlePost.fields;
-
           
-         //console.log(singlePost)
-          /*console.log("Image field:")
-          console.log(singlePost.fields.image);*/
-
+          let imageURL :any = cardPicture;
+          if(image){
+            imageURL = `https:${(image as {fields:{file:{url:string}}}).fields.file.url}`;
+          }
+        
           return (
             <div
               className=" xs:w-1/2 sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/4 m-4"
@@ -69,7 +69,9 @@ export default async function Blog() {
             >
               <div className="max-w-sm rounded-2xl overflow-hidden shadow-lg">
                 <Image
-                  src={cardPicture}
+                  src={imageURL}
+                  width={400}
+                  height={300}
                   alt="card-picture"
                   className="w-full h-48 object-cover"
                 />

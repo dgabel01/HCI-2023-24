@@ -38,8 +38,8 @@ export default function Hero() {
 
             {/* Buttons */}
             <div className="flex flex-row justify-center gap-2">
-              <button className="bg-blue-500 text-white px-3 py-2 rounded-md hover:bg-blue-800 font-medium">
-                <Link href="/login">Start Selling</Link>
+              <button className="bg-blue-500 mr-4 text-white px-3 py-2 rounded-md hover:bg-blue-800 font-medium">
+                <Link href="/add-new">Start Selling</Link>
               </button>
               <button className="bg-green-500 text-white px-3 py-2 rounded-md hover:bg-green-700 font-medium">
                 <Link href="/about">Learn More</Link>

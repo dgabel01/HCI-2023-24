@@ -6,7 +6,13 @@ export type BlogItem = {
         slug: string;
         date: Date;
         content: Document;
-        image:{}; 
+        image:{
+            fields:{
+                file:{
+                    url:string;
+                }
+            }
+        }; 
         author:string;
         //video
         //code

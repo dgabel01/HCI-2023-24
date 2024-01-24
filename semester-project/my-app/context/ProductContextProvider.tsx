@@ -25,11 +25,30 @@ const ProductContextProvider = ({ children }: IProps) => {
     setInCart(true);
   }
 
+  const removeProduct = (productId:number)=>{
+      const updatedProducts = products.filter(product=>product.id!=productId);
+      setProducts(updatedProducts);
+  }
+
+  const updateProduct = (productId: number, updatedInfo: Partial<Product>) => {
+    const updatedProducts = products.map(product => {
+      if (product.id === productId) {
+        return { ...product, ...updatedInfo };
+      }
+      return product;
+    });
+
+    setProducts(updatedProducts);
+  }
+  
+
   return (
     <ProductContext.Provider value={{
       products,
       addProduct,
       addToCart,
+      removeProduct,
+      updateProduct,
       cart
     }}>
       {children}

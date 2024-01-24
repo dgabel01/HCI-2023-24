@@ -2,6 +2,8 @@ import { BlogItem } from "@/app/types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { createClient } from "contentful";
 import type { Metadata } from 'next'
+import cardPicture from "@/public/jason-goodman-Oalh2MojUuk-unsplash.jpg" 
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: 'EasyShop Blog',
@@ -45,15 +47,27 @@ export default async function BlogPage(props: BlogPageProps) {
   const { params } = props;
   const { slug } = params;
   const article = await fetchBlogPost(slug);
-  const { title, date, content, image,author} = article.fields;
-  //console.log(article.fields.image);
+  const { title, date, content, image, author} = article.fields;
+
+    
+  let imageURL :any = cardPicture;
+  if (image && image.fields && image.fields.file && image.fields.file.url) {
+    imageURL = `https:${image.fields.file.url}`;
+  }
+  
 
   return (
     <main className="min-h-screen p-24 flex justify-center">
-      <div className="max-w-2xl text-center">
-        <p>Slika</p>
+      <div className="max-w-2xl text-center flex flex-col items-center justify-center">
+        <Image
+          src={imageURL}
+          width={550}
+          height={400}
+          alt="post-picture"
+          className="mb-4"
+        />
         <h1 className="font-extrabold text-3xl mb-8">{title}</h1>
-        <p>By:{author}</p>
+        <p>By: {author}</p>
         <p className="mb-6 text-slate-400 ">
           Posted on{" "}
           {new Date(date).toLocaleDateString("en-US", {
@@ -65,7 +79,6 @@ export default async function BlogPage(props: BlogPageProps) {
         <div className="[&>p]:mb-8 [&>h2]:font-extrabold">
           {documentToReactComponents(content)}
         </div>
-        <p>Video i code snippet</p>
       </div>
     </main>
   );

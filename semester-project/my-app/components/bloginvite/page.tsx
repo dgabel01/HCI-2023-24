@@ -26,7 +26,11 @@ export default async function BlogInvite (){
 
       <main className="flex flex-wrap justify-center gap-12 p-4 md:p-8 lg:p-12">
         {blogEntries.items.map((singlePost) => {
-          const { slug, title, date, author } = singlePost.fields;
+          const { slug, title, date, image, author } = singlePost.fields;
+          let imageURL :any = cardPicture;
+          if (image && image.fields && image.fields.file && image.fields.file.url) {
+            imageURL = `https:${image.fields.file.url}`;
+          }
           return (
             <div
               className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/4 m-4"
@@ -34,7 +38,9 @@ export default async function BlogInvite (){
             >
               <div className="max-w-sm rounded-2xl overflow-hidden shadow-lg">
                 <Image
-                  src={cardPicture}
+                  src={imageURL}
+                  width={100}
+                  height={100}
                   alt="card-picture"
                   className="w-full h-48 object-cover"
                 />

@@ -3,12 +3,14 @@ import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { useProductContext } from "@/context/ProductContext";
 import { Product } from '../page';
+import Link from 'next/link';
+import Head from 'next/head';
 
 const SingleProductPage = () => {
   const params = useParams();
   const productId = params.productId;
   //console.log(productId)
-  const { products, addToCart, cart } = useProductContext();
+  const { products, addToCart, cart, removeProduct } = useProductContext();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [incart, setInCart] = useState(false);
 
@@ -29,9 +31,20 @@ const SingleProductPage = () => {
     }
   };
 
+  const handleDelete = () => {
+    if (selectedProduct) {
+      removeProduct(selectedProduct.id);
+    }
+  }
+
 
   return (
+    
     <div>
+       <Head>
+        <title>Single Product page</title>
+        <meta name="description" content="Page for displaying a single product page" />
+      </Head>
       {selectedProduct ? (
         <>
             <main className='flex flex-col items-center justify-center mt-12'>
@@ -47,13 +60,23 @@ const SingleProductPage = () => {
                     </div>
                   </div>
                </div>
-               <button className={`btn btn-primary mt-8 ${incart ? 'disabled' : ''}`} onClick={handleAddToCart} disabled={incart}>
-                {incart ? 'Product added to Shopping Cart' : 'Add to Shopping Cart'}
-              </button>           
+               <div className='flex gap-4 mt-8'>
+                <button className={`btn btn-primary  ${incart ? 'disabled' : ''}`} onClick={handleAddToCart} disabled={incart}>
+                  {incart ? 'Product added to Shopping Cart' : 'Add to Shopping Cart'}
+                </button> 
+                <button className="btn btn-outline btn-error" onClick={handleDelete}>Delete product</button>
+              </div>
             </main>
         </>
       ) : (
-        <p>Loading product...</p>
+        <>
+        <p className='text-red-400 text-xl p-24 text-center'>Product deleted!</p>
+        <Link
+          href={"/"}
+        >
+          <p className='text-lg text-center text-green-400 hover:text-green-600'>Back to home page</p>
+        </Link>
+        </>
       )}
     </div>
   );

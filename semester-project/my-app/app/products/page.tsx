@@ -77,7 +77,7 @@ const Products = ()=> {
         <div className="flex xs:flex-col md:flex-row justify-start sm:justify-between gap-2 mb-2 sm:mb-4">
         <button
             onClick={() => handleCategoryClick("Electronics")}
-            className={`rounded-xl border-2 py-2 px-1 sm:block hover:shadow-lg cursor-pointer ${
+            className={`rounded-xl border-2 p-3 sm:block hover:shadow-lg cursor-pointer ${
               selectedCategories.includes("Electronics") ? "bg-cyan-500 dark:bg-stone-200" : ""
             }`}
           >
@@ -86,7 +86,7 @@ const Products = ()=> {
 
            <button
             onClick={() => handleCategoryClick("Clothing")}
-            className={`rounded-xl border-2 py-2 px-1 sm:block hover:shadow-lg cursor-pointer ${
+            className={`rounded-xl border-2 p-3 sm:block hover:shadow-lg cursor-pointer ${
               selectedCategories.includes("Clothing") ? "bg-cyan-500 dark:bg-stone-200" : ""
             }`}
           >
@@ -95,7 +95,7 @@ const Products = ()=> {
 
           <button
             onClick={() => handleCategoryClick("Home and Garden")}
-            className={`rounded-xl border-2 py-2 px-1 sm:block hover:shadow-lg cursor-pointer ${
+            className={`rounded-xl border-2 p-3 sm:block hover:shadow-lg cursor-pointer ${
               selectedCategories.includes("Home and Garden") ? "bg-cyan-500 dark:bg-stone-200" : ""
             }`}
           >
@@ -105,12 +105,12 @@ const Products = ()=> {
           
           <button
             onClick={clearFilters}
-            className="mr-8 rounded-xl border-2 py-2 px-1 bg-red-300 dark:bg-red-500 text-black hover:shadow-lg cursor-pointer"
+            className="mr-8 font-bold rounded-xl border-2 p-3 bg-red-300 dark:bg-red-500 text-black hover:shadow-lg cursor-pointer xs:m-auto"
           >
             Clear Filters
         </button>
         </div>
-        <div className="flex items-row gap-2 xs:m-0 md:mb-4 ">
+        <div className="flex items-row gap-2 xs:ml-2 md:mb-4 ">
           <input
             type="text"
             name=""
