@@ -4,16 +4,20 @@ import { useProductContext } from '@/context/ProductContext';
 import { Product } from "@/app/products/page";
 import Image from 'next/image';
 import Head from 'next/head';
+import { toast } from 'react-hot-toast';
+import Link from 'next/link';
+
 
 interface ProductQuantities {
   [productId: string]: number;
 }
 
 export default function ShoppingCart() {
-  let { cart } = useProductContext();
+  let { cart,removeFromCart} = useProductContext();
   const [productQuantities, setProductQuantities] = useState<ProductQuantities>({});
   const [orderStatus, setOrderStatus] = useState<string | null>(null);
   const [processing, setProcessing] = useState(false);
+  
 
   const subtotal = cart.reduce((acc, product) => {
     return acc + (product.price * (productQuantities[product.id] || 0));
@@ -28,7 +32,7 @@ export default function ShoppingCart() {
     }));
   }
   const allCountsAboveZero = cart.some((product) => productQuantities[product.id] > 0);
-  const imageSrc = "https://images.pexels.com/photos/2536965/pexels-photo-2536965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  const stockPhoto= "https://images.pexels.com/photos/2536965/pexels-photo-2536965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 
   const handleOrderClick = () => {
     const anyProductCountAboveZero = cart.some((product) => productQuantities[product.id] > 0);
@@ -38,13 +42,25 @@ export default function ShoppingCart() {
       setTimeout(() => {
         cart.length = 0;
         setOrderStatus('Cart is empty');
-      }, 6500);
-      setOrderStatus('Thank you for your order!');
+        toast.success('Thank you for your order!',{
+          duration:4000,
+        });
+      }, 5500);
 
     } else {
       setOrderStatus('Product count(s) must be at least 1 (one)');
     }
   };
+
+  const handleRemoveFromCart = (productId: number) => {
+    if(confirm("Remove this product from cart?")){
+      removeFromCart(productId);
+
+    }
+    else return;
+  };
+
+ 
 
   return (
     
@@ -63,8 +79,8 @@ export default function ShoppingCart() {
             <div className='flex flex-col gap-4 sm:flex-row items-center' key={product.id}>
               <div className='my-4 sm:ml-4'>
                 <Image
-                  src={imageSrc}
-                  width={150}
+                  src={product.images.length>0?product.images[0]:stockPhoto}
+                  width={200}
                   height={100}
                   alt='product-pic'
                 />
@@ -78,7 +94,7 @@ export default function ShoppingCart() {
                   onClick={() =>
                     updateProductQuantity(product.id, (productQuantities[product.id] || 0) + 1)
                   }
-                  className=' mb-4 p-1 bg-stone-200 '
+                  className=' mb-4 p-1 bg-stone-200 rounded-xl'
 
                 >
                   +
@@ -87,10 +103,17 @@ export default function ShoppingCart() {
                   onClick={() =>
                     updateProductQuantity(product.id, Math.max(0, (productQuantities[product.id] || 0) - 1))
                   }
-                  className='p-1 bg-stone-200'
+                  className='p-1 bg-stone-200 rounded-xl'
                 >
                   -
                 </button>
+                <button
+                  onClick={() => handleRemoveFromCart(product.id)}
+                  className='mt-4 p-2 mt-4 bg-red-300 dark:bg-red-500 font-bold rounded-xl'
+                >
+                  Remove from Cart
+                </button>
+        
                 <div className='mt-4 sm:mt-8'>
                   Total:{product.price * (productQuantities[product.id] || 0)} &euro;
                 </div>
@@ -105,12 +128,15 @@ export default function ShoppingCart() {
             <p>Subtotal: {subtotal}&euro;</p>
             {allCountsAboveZero && <p>Shipping: {shipping}&euro;</p>}
             <p>Total price: {subtotal + (allCountsAboveZero ? shipping : 0)}&euro;</p>
-            <button className="btn btn-success" onClick={handleOrderClick}>{processing? "Ordering...": "Order"}</button>
+            <button className="btn btn-success xs:w-36 m-auto text-white" onClick={handleOrderClick}>{processing? "Ordering...": "Order"}</button>
             {orderStatus && <p className='text-xl text-green-500 animate-pulse'>{orderStatus}</p>}
           </div>
         </div>
       ) : (
-        <p className='text-xl text-center mt-8'>Your cart is empty</p>
+        <div className='flex flex-col items-center justify-center'>
+           <p className='text-lg my-8'>Your Shopping Cart is empty</p>
+           <Link href={"/"} className='text-lg text-green-400 hover-text-green-600'>Back to Home Page</Link>
+        </div>
       )}
     </>
   );

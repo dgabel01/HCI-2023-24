@@ -34,8 +34,8 @@ export default async function Blog() {
     <div className="flex justify-evenly gap-8 bg-stone-200 p-24 xs:flex-col-reverse md:flex-row">
       <div className="mt-8">
         <h1 className="font-extrabold text-3xl">Welcome to our Blog</h1>
-        <p className="mt-8">Master the art of ecommerce by launching your own business</p>
-        <p className="mt-8">Stay updated with the newest design and development ideas and insights shared by the EasyShop team, powered by Contentful CMS</p>
+        <p className="mt-8 text-lg">Master the art of ecommerce by launching your own business</p>
+        <p className="mt-8 text-lg">Stay updated with the newest design and development ideas and insights shared by the EasyShop team, powered by Contentful CMS</p>
         <Link href={`/`}><button className="btn btn-success mt-8">Get Started</button></Link>
       </div>
       <div>

@@ -23,7 +23,7 @@ export default function About() {
           <h2 className="font-extrabold mb-2 text-xl">ABOUT US</h2>
           <h1 className="font-extrabold text-3xl mb-4">EasyShop powers thousands of daily product sales</h1>
           <p className="mb-4 text-xl">The all-in-one commerce platform to list your products for sale</p>
-          <button className="btn btn-active btn-accent w-32 hover:shadow-lg">Get Started</button>
+          <Link href={"/products"}><button className="btn btn-active btn-accent w-32 hover:shadow-lg">Get Started</button></Link>
         </div>
         <div className="flex flex-row">
           <Image

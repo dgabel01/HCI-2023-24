@@ -25,6 +25,12 @@ const ProductContextProvider = ({ children }: IProps) => {
     setInCart(true);
   }
 
+  const removeFromCart = (productId: number) => {
+    const updatedCart = cart.filter(product => product.id !== productId);
+    setCart(updatedCart);
+  };
+
+
   const removeProduct = (productId:number)=>{
       const updatedProducts = products.filter(product=>product.id!=productId);
       setProducts(updatedProducts);
@@ -47,6 +53,7 @@ const ProductContextProvider = ({ children }: IProps) => {
       products,
       addProduct,
       addToCart,
+      removeFromCart,
       removeProduct,
       updateProduct,
       cart

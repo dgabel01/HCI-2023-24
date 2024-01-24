@@ -6,6 +6,8 @@ const space = Space_Grotesk({ subsets: ['latin'] });
 import Navbar from '../components/navbar'
 import Footer from '../components/footer/page';
 import ProductContextProvider from '@/context/ProductContextProvider';
+import { Toaster } from "react-hot-toast";
+
 
 export const metadata: Metadata = {
   title: 'EasyShop',
@@ -21,6 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={space.className}>
         <Navbar/>
+        <Toaster position="top-center" />
         <ProductContextProvider> {children}</ProductContextProvider>
         <Footer/>
       </body>

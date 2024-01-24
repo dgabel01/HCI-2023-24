@@ -5,6 +5,11 @@ import { useProductContext } from "@/context/ProductContext";
 import { Product } from '../page';
 import Link from 'next/link';
 import Head from 'next/head';
+import { toast } from 'react-hot-toast';
+
+
+const url = "https://images.pexels.com/photos/2536965/pexels-photo-2536965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+
 
 const SingleProductPage = () => {
   const params = useParams();
@@ -29,15 +34,27 @@ const SingleProductPage = () => {
     if (selectedProduct) {
       addToCart(selectedProduct);
       setInCart(true);
+      toast.success("Product added to Shopping Cart!",{
+        duration:4000,
+      })
     }
   };
 
   const handleDelete = () => {
     if (selectedProduct) {
-      removeProduct(selectedProduct.id);
-    }
-  }
+      const isInCart = cart.some(product => product.id === selectedProduct.id);
 
+      if (isInCart) {
+        toast.error("Cannot delete a product that is in the Shopping Cart!",{
+          duration:4000,
+        });
+      } else {
+        if (confirm("Are you sure you want to delete this product?")) {
+          removeProduct(selectedProduct.id);
+        }
+      }
+    }
+  };
 
   return (
     
@@ -51,7 +68,7 @@ const SingleProductPage = () => {
             <main className='flex flex-col items-center justify-center mt-12'>
               <p className='my-8 text-xl font-bold'>Showing product : {selectedProduct.title}</p>
               <div className="card w-96 bg-base-100 shadow-xl mx-4 xs:w-64 md:w-96">
-                  <figure><img src={selectedProduct.images[0]} alt="Stock photo" /></figure>
+              <figure><img src={selectedProduct.images.length > 0 ? selectedProduct.images[0] : url} alt="Stock photo" /></figure>
                   <div className="card-body">
                     <h2 className="card-title">{selectedProduct.title}</h2>
                     <p className='text-sm rounded-xl bg-stone-200 w-24 p-2'>{selectedProduct.category}</p>

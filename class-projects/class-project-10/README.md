@@ -1,11 +1,11 @@
 **Weekly progress:**
 
--To do: Add CMS video and image fields, shopping cart responsivness and visual improvement
+-To do: (blog search bar)
 
 
 **Status:**
 
-- Added single product page, shopping cart functionality
+- Added single product page, shopping cart functionality, product image upload added, shopping cart page improved, toast notifications added
 
 **Problems:**
 

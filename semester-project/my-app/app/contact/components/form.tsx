@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+
 
 interface FormData {
   name: string;
@@ -20,7 +22,6 @@ const Form: React.FC = () => {
   });
 
   const [loading, setLoading] = useState<boolean>(false);
-  const [successMessage, setSuccessMessage] = useState<string>("");
 
 
 
@@ -35,6 +36,10 @@ const Form: React.FC = () => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
+    if (!formData.name || !formData.surname|| !formData.email || !formData.text) {
+      toast.error('Please fill in all required fields.', { duration: 4000 });
+      return;
+    }
     e.preventDefault();
 
     setLoading(true);
@@ -56,12 +61,14 @@ const Form: React.FC = () => {
             accountname: '',
             text: '',
           });
-          setSuccessMessage("Thank you for reaching out to us, we will get back to you shortly!");
-          setTimeout(() => {
-            setSuccessMessage("");
-          }, 6500);
+        
         }
       }, 1500); 
+      setTimeout(()=>{ 
+        toast.success("Your reponse has been sent sucessfully!",{
+          duration:4000,
+        })
+      }, 2000)
     };
 
   return (
@@ -120,7 +127,7 @@ const Form: React.FC = () => {
           <textarea
             value={formData.text}
             onChange={handleInputChange}
-            placeholder="Tell us more about your issue"
+            placeholder="Tell us more about your issue*"
             name="text"
             id=""
             className="my-8 xs:w-64 sm:w-64 md:w-96 h-28 w-auto rounded-xl p-2 outline-none border-2 hover:shadow-lg"
@@ -137,9 +144,7 @@ const Form: React.FC = () => {
         {loading ? 'Sending...' : 'Send'}
       </button>
       </div>
-      <div className="col-span-2 text-green-500 m-24 animate-pulse text-center text-xl">
-        <p>{successMessage}</p>
-      </div>
+      
     </div>
   );
 };

@@ -6,17 +6,18 @@ import { IoBuildOutline } from "react-icons/io5";
 import { useProductContext } from "@/context/ProductContext";
 import Head  from "next/head";
 
-//add category tag
 export interface Product {
   id: number;
   title: string;
   price:number;
   description:string;
   images:string[];
-  category:string;
+  category:string | "";
 }
 
 const url = "https://images.pexels.com/photos/2536965/pexels-photo-2536965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+
 const Products = ()=> {
   
 
@@ -58,7 +59,7 @@ const Products = ()=> {
       <>
         <div className="flex flex-col items-center justify-center mb-24">
           <h1 className="text-center text-red-500 p-5 font-bold text-2xl mt-16">No products added yet!</h1>
-          <Link href={`/add-new`}><p className="text-lg hover:text-green-500">Click here to list your products for sale</p></Link>
+          <Link href={`/add-new`}><p className="text-lg hover:text-green-500 hover:text-xl">Click here to list your products for sale</p></Link>
         </div>
       </>
     );
@@ -139,13 +140,13 @@ const Products = ()=> {
               {product.images.length > 0 ? (
                   product.images.map((image, index) => (
                     <figure key={index}>
-                      <img src={image} alt={`Product ${index + 1}`} width={250} height={150} />
+                      <img src={image} alt={`Product ${index + 1}`}  />
                     </figure>
                   ))
                 ) : (
                   // If no images, use default URL
                   <figure>
-                    <img src={url} alt="Default Stock photo" width={250} height={150} />
+                    <img src={url} alt="Default Stock photo"/>
                   </figure>
                 )}
                 <div className="card-body">
