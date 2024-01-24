@@ -17,7 +17,7 @@ const ProductContextProvider = ({ children }: IProps) => {
   const addProduct = (product: Product) => {
     const generatedId = lastGeneratedId + 1;
     setLastGeneratedId(generatedId);
-    setProducts([...products, { ...product, id: generatedId }]);
+    setProducts([...products, { ...product, id: generatedId, images:product.images}]);
   }
 
   const addToCart = (product: Product) => {

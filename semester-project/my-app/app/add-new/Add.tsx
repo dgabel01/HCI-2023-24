@@ -29,14 +29,29 @@ const Add = () => {
     console.log('Generated Product ID:', generatedId);
     setLastGeneratedId(generatedId);
 
-  
+    const imageInput = document.getElementById("image-input") as HTMLInputElement;
+    const images: string[] = [];
+
+    if (imageInput && imageInput.files) {
+      for (let i = 0; i < imageInput.files.length; i++) {
+        const file = imageInput.files[i];
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          if (e.target && e.target.result) {
+            images.push(e.target.result as string);
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
 
     addProduct({
       id: generatedId,
       title: title,
       price: price,
       description: description,
-      images: "",
+      images:images,
       category:category
     });
 
@@ -46,6 +61,10 @@ const Add = () => {
       setPrice(0);
       setDescription("");
       setCategory("");
+      const imageInput = document.getElementById("image-input") as HTMLInputElement;
+      if (imageInput) {
+        imageInput.value = "";
+      }
       setSuccessMessage("Product added successfully!");
 
       // Clear success message after 2 seconds
@@ -104,6 +123,17 @@ const Add = () => {
     </select>
   </label>
 
+   
+    <label className="flex flex-col items-start">
+        Product image:
+        <input
+        type="file"
+        id="image-input"
+        multiple
+        onChange={(e) => console.log(e.target.files)}
+        className="border-2 rounded-lg p-1 mt-1"
+        />
+    </label>
 
   <button className="w-52 border-2 rounded-lg bg-sky-200 hover:bg-green-400" onClick={add}>
     {loading ? "Adding product..." : "Add your product"}

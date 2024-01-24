@@ -12,10 +12,11 @@ export interface Product {
   title: string;
   price:number;
   description:string;
-  images:string | null;
+  images:string[];
   category:string;
 }
 
+const url = "https://images.pexels.com/photos/2536965/pexels-photo-2536965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 const Products = ()=> {
   
 
@@ -135,8 +136,19 @@ const Products = ()=> {
           
           <Link href={`/products/${product.id}`} key={product.id}>
               <div className="card w-96 bg-base-100 shadow-xl mx-4 xs:w-64 md:w-96">
-              <figure><img src="https://images.pexels.com/photos/2536965/pexels-photo-2536965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Stock photo" /></figure>
-              <div className="card-body">
+              {product.images.length > 0 ? (
+                  product.images.map((image, index) => (
+                    <figure key={index}>
+                      <img src={image} alt={`Product ${index + 1}`} width={250} height={150} />
+                    </figure>
+                  ))
+                ) : (
+                  // If no images, use default URL
+                  <figure>
+                    <img src={url} alt="Default Stock photo" width={250} height={150} />
+                  </figure>
+                )}
+                <div className="card-body">
                 <h2 className="card-title">{product.title}</h2>
                 <p className='text-sm rounded-xl bg-stone-200 w-24 p-2'>{product.category}</p>
                 <p>{product.description}</p>
