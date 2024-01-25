@@ -109,7 +109,7 @@ const Products = () => {
             key={category}
             onClick={() => handleCategoryClick(category || "")}
             className={`rounded-xl border-2 p-3 sm:block hover:shadow-lg cursor-pointer ${
-              selectedCategories.includes(category?.toLowerCase() ?? "")
+              selectedCategories.includes(category?? "")
                 ? "bg-cyan-500 dark:bg-stone-200"
                 : ""
             }`}
