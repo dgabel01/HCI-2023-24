@@ -53,6 +53,7 @@ const Add = () => {
       description: description,
       images:images,
       category: category === "Other" ? customCategory : category,
+      customCategory:customCategory
     });
 
     setTimeout(() => {
@@ -71,7 +72,7 @@ const Add = () => {
         toast.success("Product added to Home Page sucessfully!",{
           duration:4000,
         })
-      }, 2000);
+      }, 1000);
     }, 1000);
    
   };

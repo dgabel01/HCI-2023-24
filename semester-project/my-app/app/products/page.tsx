@@ -1,27 +1,24 @@
 "use client"
-import React,{useState} from "react";
-import Link from "next/link";
-import { PureComponent } from "react";
-import { IoBuildOutline } from "react-icons/io5";
+import React, { useState } from "react";
 import { useProductContext } from "@/context/ProductContext";
-import Head  from "next/head";
+import Head from "next/head";
+import Link from "next/link";
 
 export interface Product {
   id: number;
   title: string;
-  price:number;
-  description:string;
-  images:string[];
-  category:string | "";
+  price: number;
+  description: string;
+  images: string[];
+  category: string | "";
+  customCategory?: string; // Make sure customCategory is optional
 }
 
-const url = "https://images.pexels.com/photos/2536965/pexels-photo-2536965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+const url =
+  "https://images.pexels.com/photos/2536965/pexels-photo-2536965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
 
-
-const Products = ()=> {
-  
-
-  const {products} = useProductContext()
+const Products = () => {
+  const { products } = useProductContext();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
@@ -32,20 +29,32 @@ const Products = ()=> {
 
     const matchesCategories =
       selectedCategories.length === 0 ||
-      selectedCategories.includes(product.category);
+      selectedCategories.some((category) =>
+        category.toLowerCase() === "other"
+          ? product.customCategory?.toLowerCase().includes("other")
+          : product.category.toLowerCase().includes(category.toLowerCase())
+      );
 
     return matchesSearch && matchesCategories;
   });
 
   const handleCategoryClick = (category: string) => {
-    // Check if the category is already selected
-    if (selectedCategories.includes(category)) {
-      // Remove the category if already selected
-      setSelectedCategories(selectedCategories.filter((c) => c !== category));
-    } else {
-      // Add the category if not selected
-      setSelectedCategories([...selectedCategories, category]);
-    }
+    setSelectedCategories((prevCategories) => {
+      if (prevCategories.includes(category)) {
+        return prevCategories.filter((c) => c !== category);
+      } else {
+        return [...prevCategories, category];
+      }
+    });
+  };
+  
+  const getUniqueCategories = () => {
+    const customCategories = products
+      .filter((product) => product.customCategory && !["Electronics", "Clothing", "Home and Garden"].includes(product.category))
+      .map((product) => product.customCategory);
+
+    const uniqueCustomCategories = Array.from(new Set(customCategories));
+    return uniqueCustomCategories;
   };
 
   const clearFilters = () => {
@@ -53,64 +62,69 @@ const Products = ()=> {
     setSelectedCategories([]);
   };
 
-
-  if(products.length===0){
-    return(
+  if (products.length === 0) {
+    return (
       <>
         <div className="flex flex-col items-center justify-center mb-24">
-          <h1 className="text-center text-red-500 p-5 font-bold text-2xl mt-16">No products added yet!</h1>
-          <Link href={`/add-new`}><p className="text-lg hover:text-green-500 hover:text-xl">Click here to list your products for sale</p></Link>
+          <h1 className="text-center text-red-500 p-5 font-bold text-2xl mt-16">
+            No products added yet!
+          </h1>
+          <Link href={`/add-new`}>
+            <p className="text-lg hover:text-green-500 hover:text-xl">
+              Click here to list your products for sale
+            </p>
+          </Link>
         </div>
       </>
     );
   }
 
-  return(
-  
-   <main className="flex flex-col items-center min-h-screen max-w-5xl m-auto p-4 sm:justify-center">
-    <Head>
-      <title>Products</title>
-      <meta name="description" content="Listed products for sale" />  
-    </Head>
-     <h1 className="text-2xl sm:text-3xl font-bold p-4 sm:p-10">Find the best products</h1>
-      <p className="mb-6 text-xl">Explore tech, clothing and more</p>
+  return (
+    <main className="flex flex-col items-center min-h-screen max-w-5xl m-auto p-4 sm:justify-center">
+      <Head>
+        <title>Products</title>
+        <meta name="description" content="Listed products for sale" />
+      </Head>
+      <h1 className="text-2xl sm:text-3xl font-bold p-4 sm:p-10">Find the best products</h1>
+      <p className="mb-6 text-xl">Explore tech, clothing, and more</p>
 
       <div className="flex xs:flex-col md:flex-row items-center justify-center mb-12">
         <div className="flex xs:flex-col md:flex-row justify-start sm:justify-between gap-2 mb-2 sm:mb-4">
-        <button
-            onClick={() => handleCategoryClick("Electronics")}
-            className={`rounded-xl border-2 p-3 sm:block hover:shadow-lg cursor-pointer ${
-              selectedCategories.includes("Electronics") ? "bg-cyan-500 dark:bg-stone-200" : ""
-            }`}
-          >
-            Electronics
-          </button>
-
-           <button
-            onClick={() => handleCategoryClick("Clothing")}
-            className={`rounded-xl border-2 p-3 sm:block hover:shadow-lg cursor-pointer ${
-              selectedCategories.includes("Clothing") ? "bg-cyan-500 dark:bg-stone-200" : ""
-            }`}
-          >
-            Clothing
-          </button>        
-
+        {["Electronics", "Clothing", "Home and Garden"].map((category) => (
           <button
-            onClick={() => handleCategoryClick("Home and Garden")}
+            key={category}
+            onClick={() => handleCategoryClick(category || "")}
             className={`rounded-xl border-2 p-3 sm:block hover:shadow-lg cursor-pointer ${
-              selectedCategories.includes("Home and Garden") ? "bg-cyan-500 dark:bg-stone-200" : ""
+              selectedCategories.includes(category)
+                ? "bg-cyan-500 dark:bg-stone-200"
+                : ""
             }`}
           >
-            Home and Garden
+            {category}
           </button>
-          
-          
+        ))}
+
+        {getUniqueCategories().map((category) => (
+          <button
+            key={category}
+            onClick={() => handleCategoryClick(category || "")}
+            className={`rounded-xl border-2 p-3 sm:block hover:shadow-lg cursor-pointer ${
+              selectedCategories.includes(category?.toLowerCase() ?? "")
+                ? "bg-cyan-500 dark:bg-stone-200"
+                : ""
+            }`}
+          >
+            {category}
+          </button>
+        ))}
+
+
           <button
             onClick={clearFilters}
             className="mr-8 font-bold rounded-xl border-2 p-3 bg-red-300 dark:bg-red-500 text-black hover:shadow-lg cursor-pointer xs:m-auto"
           >
             Clear Filters
-        </button>
+          </button>
         </div>
         <div className="flex items-row gap-2 xs:ml-2 md:mb-4 ">
           <input
@@ -122,65 +136,56 @@ const Products = ()=> {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full sm:w-64 p-2 outline-none rounded-2xl border-2 focus:shadow-lg"
           />
-       </div>
+        </div>
       </div>
 
-
-
       <div className="flex flex-wrap gap-12 items-center justify-center">
-      {filteredProducts.length === 0 ? (
-        <p className="text-red-500 text-lg font-bold">
-          No products matching inputted title and description
-        </p>
-      ) : (
-        filteredProducts.map((product) => (
-          
-          <Link href={`/products/${product.id}`} key={product.id}>
+        {filteredProducts.length === 0 ? (
+          <p className="text-red-500 text-lg font-bold">
+            No products matching inputted title and description
+          </p>
+        ) : (
+          filteredProducts.map((product) => (
+            <Link href={`/products/${product.id}`} key={product.id}>
               <div className="card w-96 bg-base-100 shadow-xl mx-4 xs:w-64 md:w-96">
-              {product.images.length > 0 ? (
+                {product.images.length > 0 ? (
                   product.images.map((image, index) => (
                     <figure key={index}>
-                      <img src={image} alt={`Product ${index + 1}`}  />
+                      <img src={image} alt={`Product ${index + 1}`} />
                     </figure>
                   ))
                 ) : (
                   // If no images, use default URL
                   <figure>
-                    <img src={url} alt="Default Stock photo"/>
+                    <img src={url} alt="Default Stock photo" />
                   </figure>
                 )}
                 <div className="card-body">
-                <h2 className="card-title">{product.title}</h2>
-                <p className='text-sm rounded-xl bg-stone-200 w-24 p-2'>{product.category}</p>
-                <p>{product.description}</p>
-                <div className="card-actions justify-end">
-                  <p>{product.price}&euro;</p>
-                  <button className="btn btn-primary">Buy Now</button>
+                  <h2 className="card-title">{product.title}</h2>
+                  <p className="text-sm rounded-xl bg-stone-200 w-24 p-2">
+                    {product.customCategory ? product.customCategory : product.category}
+                  </p>
+                  <p>{product.description}</p>
+                  <div className="card-actions justify-end">
+                    <p>{product.price}&euro;</p>
+                    <button className="btn btn-primary">Buy Now</button>
+                  </div>
                 </div>
               </div>
-            </div>
-         </Link>
-        ))
-      )}
-    </div>
+            </Link>
+          ))
+        )}
+      </div>
 
-
-
-    <div className="flex flex-row mt-8">
-          <div className="join">
-              <button className="join-item btn">«</button>
-              <button className="join-item btn">Page 1</button>
-              <button className="join-item btn">»</button>
-          </div>
-    </div>
-
-
-  </main>
-
+      <div className="flex flex-row mt-8">
+        <div className="join">
+          <button className="join-item btn">«</button>
+          <button className="join-item btn">Page 1</button>
+          <button className="join-item btn">»</button>
+        </div>
+      </div>
+    </main>
   );
- 
-  
- 
 };
 
 export default Products;
