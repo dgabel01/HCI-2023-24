@@ -71,7 +71,7 @@ const Products = () => {
           Oops! No products added yet <FaShoppingCart className="inline-block ml-2" />
         </h1>
         <p className="text-gray-600 text-lg mb-8 text-center sm:text-left">
-          It looks like you haven't added any products for sale. Let's fix that!
+          It looks like you haven&apos;t added any products for sale. Let&apos;s fix that!
         </p>
         <Link href={`/add-new`}>
           <p className="bg-green-500 text-white py-2 px-4 rounded-full text-lg hover:bg-green-600">
