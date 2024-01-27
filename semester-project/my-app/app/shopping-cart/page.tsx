@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Head from 'next/head';
 import { toast } from 'react-hot-toast';
 import Link from 'next/link';
+import { FaShoppingCart } from 'react-icons/fa'; 
 
 
 interface ProductQuantities {
@@ -134,8 +135,13 @@ export default function ShoppingCart() {
         </div>
       ) : (
         <div className='flex flex-col items-center justify-center'>
-           <p className='text-lg my-8'>Your Shopping Cart is empty</p>
-           <Link href={"/"} className='text-lg text-green-400 hover-text-green-600'>Back to Home Page</Link>
+          <p className='text-2xl font-bold text-gray-600 my-8'>
+            <FaShoppingCart className='inline-block mb-2 mr-2 text-gray-400' />
+            Your Shopping Cart is empty
+          </p>
+          <Link href={"/"} className='text-lg text-green-500 hover:text-green-600'>
+            Browse Products on Home Page
+          </Link>
         </div>
       )}
     </>

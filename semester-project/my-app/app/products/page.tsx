@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useProductContext } from "@/context/ProductContext";
 import Head from "next/head";
 import Link from "next/link";
+import { FaShoppingCart } from 'react-icons/fa'; 
 
 export interface Product {
   id: number;
@@ -65,17 +66,20 @@ const Products = () => {
   if (products.length === 0) {
     return (
       <>
-        <div className="flex flex-col items-center justify-center mb-24">
-          <h1 className="text-center text-red-500 p-5 font-bold text-2xl mt-16">
-            No products added yet!
-          </h1>
-          <Link href={`/add-new`}>
-            <p className="text-lg hover:text-green-500 hover:text-xl">
-              Click here to list your products for sale
-            </p>
-          </Link>
-        </div>
-      </>
+      <div className="flex flex-col items-center justify-center mb-48">
+        <h1 className="text-center text-red-500 p-5 font-bold text-3xl mt-16">
+          Oops! No products added yet <FaShoppingCart className="inline-block ml-2" />
+        </h1>
+        <p className="text-gray-600 text-lg mb-8 text-center sm:text-left">
+          It looks like you haven't added any products for sale. Let's fix that!
+        </p>
+        <Link href={`/add-new`}>
+          <p className="bg-green-500 text-white py-2 px-4 rounded-full text-lg hover:bg-green-600">
+            List your products for sale now
+          </p>
+        </Link>
+      </div>
+    </>
     );
   }
 
@@ -85,7 +89,7 @@ const Products = () => {
         <title>Products</title>
         <meta name="description" content="Listed products for sale" />
       </Head>
-      <h1 className="text-2xl sm:text-3xl font-bold p-4 sm:p-10">Find the best products</h1>
+      <h1 className="text-2xl sm:text-3xl font-bold p-4 sm:p-10">Find the best products for sale</h1>
       <p className="mb-6 text-xl">Explore tech, clothing, and more</p>
 
       <div className="flex xs:flex-col md:flex-row items-center justify-center mb-12">
@@ -142,7 +146,7 @@ const Products = () => {
       <div className="flex flex-wrap gap-12 items-center justify-center">
         {filteredProducts.length === 0 ? (
           <p className="text-red-500 text-lg font-bold">
-            No products matching inputted title and description
+            No products matching your search query or filters!
           </p>
         ) : (
           filteredProducts.map((product) => (

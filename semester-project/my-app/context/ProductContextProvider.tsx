@@ -13,6 +13,7 @@ const ProductContextProvider = ({ children }: IProps) => {
   const [lastGeneratedId, setLastGeneratedId] = useState<number>(0);
   const [cart, setCart] = useState<Product[]>([]);
   const [incart, setInCart] = useState(true);
+  
 
   const addProduct = (product: Product) => {
     const generatedId = lastGeneratedId + 1;

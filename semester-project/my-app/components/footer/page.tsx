@@ -22,7 +22,7 @@ export default function Footer() {
 							<FaYoutube className="text-2xl cursor-pointer hover:text-red-600" />
 						
 						</div>*/}
-				<p className="text-white" >Addres: Neka ulica 123</p>
+				<p className="text-white" >Addres: Shop Street 123</p>
 				<p className="text-white" >Telephone: +123 456 789</p>
 				<p className="text-white" >Email: easyshop@mail.com</p>
 				<p></p>

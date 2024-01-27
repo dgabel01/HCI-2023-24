@@ -36,7 +36,9 @@ export default async function Blog() {
         <h1 className="font-extrabold text-3xl">Welcome to our Blog</h1>
         <p className="mt-8 text-lg">Master the art of ecommerce by launching your own business</p>
         <p className="mt-8 text-lg">Stay updated with the newest design and development ideas and insights shared by the EasyShop team, powered by Contentful CMS</p>
-        <Link href={`/`}><button className="btn btn-success mt-8">Get Started</button></Link>
+        <div className="xs:text-center sm:text-left">
+          <Link href={`/`}><button className="btn btn-success mt-8">Get Started</button></Link>
+        </div>
       </div>
       <div>
         <Image

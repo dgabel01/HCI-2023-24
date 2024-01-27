@@ -16,19 +16,68 @@ const SingleProductPage = () => {
   const productId = params.productId;
   const productImage = params.images;
   //console.log(productId)
-  const { products, addToCart, cart, removeProduct } = useProductContext();
+  const { products, addToCart, cart, removeProduct, updateProduct } = useProductContext();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [incart, setInCart] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedProductInfo, setEditedProductInfo] = useState({
+    title: selectedProduct?.title || '',
+    category:selectedProduct?.category||'',
+    customCategory: selectedProduct?.customCategory || '',
+    description: selectedProduct?.description || '',
+    price: selectedProduct?.price || 0,
+  });
+
+
+  const handleEdit = () => {
+    setIsEditing(true);
+  };
+
+  const handleSave = () => {
+    if (selectedProduct) {
+      updateProduct(selectedProduct.id, editedProductInfo);
+  
+      const updatedProduct = {
+        ...selectedProduct,
+        customCategory: editedProductInfo.customCategory,
+      };
+  
+      setSelectedProduct(updatedProduct);
+    }
+  
+    setIsEditing(false);
+    toast.success("Product information updated!", {
+      duration: 4000,
+    });
+  };
+  
+
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+  };
+
+
 
   useEffect(() => {
     const foundProduct = products.find(product => String(product.id) === String(productId));
     setSelectedProduct(foundProduct || null);
+
+    
+    setEditedProductInfo({
+      title: foundProduct?.title || '',
+      category: foundProduct?.category || '',
+      customCategory: foundProduct?.customCategory || '',
+      description: foundProduct?.description || '',
+      price: foundProduct?.price || 0,
+    });
 
     // Check if the selected product is in the cart
     const isInCart = cart.some(product => product.id === foundProduct?.id);
     setInCart(isInCart);
 
   }, [productId, products, cart]);
+
+
 
   const handleAddToCart = () => {
     if (selectedProduct) {
@@ -39,6 +88,8 @@ const SingleProductPage = () => {
       })
     }
   };
+
+
 
   const handleDelete = () => {
     if (selectedProduct) {
@@ -56,48 +107,129 @@ const SingleProductPage = () => {
     }
   };
 
-  return (
-    
+
+
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setEditedProductInfo((prevInfo) => ({
+      ...prevInfo,
+      [name]: value,
+    }));
+  };
+
+
+  const handleCategoryInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const { value } = e.target;
+    setEditedProductInfo((prevInfo) => ({
+      ...prevInfo,
+      category: value,
+      customCategory: value,
+    }));
+  };
+  
+
+
+  return (  
     <div>
        <Head>
         <title>Single Product page</title>
         <meta name="description" content="Page for displaying a single product page" />
       </Head>
       {selectedProduct ? (
-        <>
-            <main className='flex flex-col items-center justify-center mt-12'>
-              <p className='my-8 text-xl font-bold'>Showing product : {selectedProduct.title}</p>
-              <div className="card w-96 bg-base-100 shadow-xl mx-4 xs:w-64 md:w-96">
-              <figure><img src={selectedProduct.images.length > 0 ? selectedProduct.images[0] : url} alt="Stock photo" /></figure>
-                  <div className="card-body">
-                    <h2 className="card-title">{selectedProduct.title}</h2>
-                    <p className='text-sm rounded-xl bg-stone-200 w-24 p-2'>{selectedProduct.category}</p>
-                    <p>{selectedProduct.description}</p>
-                    <div className="card-actions justify-end">
-                      <p>{selectedProduct.price}&euro;</p>
-                    </div>
-                  </div>
-               </div>
-               <div className='flex gap-4 mt-8'>
-                <button className={`btn btn-primary  ${incart ? 'disabled' : ''}`} onClick={handleAddToCart} disabled={incart}>
-                  {incart ? 'Product added to Shopping Cart' : 'Add to Shopping Cart'}
-                </button> 
-                <button className="btn btn-outline btn-error" onClick={handleDelete}>Delete product</button>
-              </div>
-            </main>
-        </>
-      ) : (
-        <>
-        <p className='text-red-400 text-xl p-24 text-center'>Product deleted!</p>
-        <Link
-          href={"/"}
+  <>
+    <main className='flex flex-col items-center justify-center mt-12'>
+      <p className='my-8 text-xl font-bold'>Showing product : {selectedProduct.title}</p>
+      <div className="card w-96 bg-base-100 shadow-xl mx-4 xs:w-64 md:w-96">
+        <figure><img src={selectedProduct.images.length > 0 ? selectedProduct.images[0] : url} alt="Stock photo" /></figure>
+        <div className="card-body">
+          <h2 className="card-title">{selectedProduct.title}</h2>
+          <p className='text-sm rounded-xl bg-stone-200 w-24 p-2'>{selectedProduct.category}</p>
+          <p>{selectedProduct.description}</p>
+          <div className="card-actions justify-end">
+            <p>{selectedProduct.price}&euro;</p>
+          </div>
+        </div>
+      </div>
+
+      <div className=' xs:flex flex-col gap-4 lg:flex gap-4 mt-8 '>
+        {isEditing ? (
+          <>
+            <input
+              type='text'
+              name='title'
+              value={editedProductInfo.title}
+              onChange={handleInputChange}
+              placeholder='New Title...'
+              className='rounded-xl p-2 border-2'
+            />
+            <input
+              type='text'
+              name='category'
+              onChange={handleCategoryInputChange}
+              placeholder='New Category...'
+              className='rounded-xl p-2 border-2'
+            />
+            <textarea
+              name='description'
+              value={editedProductInfo.description}
+              onChange={handleInputChange}
+              placeholder='New Description...'
+              className='rounded-xl p-2 border-2'
+            />
+            <input
+              type='number'
+              name='price'
+              value={editedProductInfo.price}
+              onChange={handleInputChange}
+              placeholder='New Price...'
+              className='rounded-xl p-2 border-2'
+            />
+          </>
+        ) : null}
+
+        <button
+          className={`btn btn-primary ${incart ? 'disabled' : ''}`}
+          onClick={handleAddToCart}
+          disabled={incart || isEditing}
         >
-          <p className='text-lg text-center text-green-400 hover:text-green-600'>Back to home page</p>
-        </Link>
-        </>
-      )}
-    </div>
+          {incart ? 'Product added to Shopping Cart' : 'Add to Shopping Cart'}
+        </button>
+
+        {isEditing ? (
+          <>
+            {/* Save and Cancel buttons during editing */}
+            <button className="btn btn-outline btn-success" onClick={handleSave}>
+              Save
+            </button>
+            <button className="btn btn-outline btn-error" onClick={handleCancelEdit}>
+              Cancel
+            </button>
+          </>
+        ) : (
+          <>
+            <button className="btn btn-outline btn-error" onClick={handleEdit}>
+              Edit product
+            </button>
+            <button className="btn btn-outline btn-error" onClick={handleDelete}>
+              Delete product
+            </button>
+          </>
+        )}
+      </div>
+    </main>
+  </>
+) : (
+  <>
+    <p className='text-red-400 text-xl p-24 text-center'>Product deleted!</p>
+    <Link href={"/"}>
+      <p className='text-lg text-center text-green-400 hover:text-green-600'>Back to home page</p>
+    </Link>
+  </>
+)}
+</div>
   );
-};
+  };
 
 export default SingleProductPage;

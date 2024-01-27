@@ -3,6 +3,8 @@ import { BlogQueryResult } from "@/app/types";
 import { createClient } from "contentful";
 import Image from "next/image";
 import cardPicture from "@/public/jason-goodman-Oalh2MojUuk-unsplash.jpg" 
+import { FaBookOpen } from 'react-icons/fa'; 
+
 
 const client = createClient({
   space: process.env.SPACE_ID || "",
@@ -20,9 +22,14 @@ export default async function BlogInvite (){
   return (
     <>
       <div className="flex flex-col items-center mt-8">
-        <h1 className="font-bold text-3xl title-font xs:text-xl md:text-3xl">Explore Our Insightful <Link href={`/blog`} className="hover:text-blue-400 hover:underline">Blog</Link></h1>
-        <p className="mt-4 mb-8 text-xl text-center xs:text-md mx-2 mt-4md:text-xl">Discover the Latest Posts from the EasyShop Team</p>
-      </div>
+      <h1 className="font-bold title-font xs:text-lg md:text-xl lg:text-3xl">
+        <FaBookOpen className="inline-block mb-2 mr-2 text-blue-500" />
+        Explore Our Insightful <Link href={`/blog`} className="hover:text-blue-400 hover:underline">Blog</Link>
+      </h1>
+      <p className="mt-4 mb-8 text-lg text-center md:text-xl">
+        Discover the Latest Posts from the EasyShop Team
+      </p>
+    </div>
 
       <main className="flex flex-wrap justify-center gap-12 p-4 md:p-8 lg:p-12">
         {blogEntries.items.map((singlePost) => {
@@ -33,7 +40,7 @@ export default async function BlogInvite (){
           }
           return (
             <div
-              className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/4 m-4"
+              className=" rounded-xl w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/4 m-4 hover:outline outline-blue-500 outline-2"
               key={slug}
             >
               <div className="max-w-sm rounded-2xl overflow-hidden shadow-lg">

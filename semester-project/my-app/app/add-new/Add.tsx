@@ -2,6 +2,7 @@
 import { useProductContext } from "@/context/ProductContext";
 import React, { use, useState } from "react";
 import toast from "react-hot-toast";
+import { FaClipboardList } from 'react-icons/fa';
 
 const Add = () => {
   const [title, setTitle] = useState("");
@@ -79,9 +80,14 @@ const Add = () => {
 
   return (
     <>
-    <div className="flex items-center justify-center text-xl mt-8 mb-16">
-      <p>List your product for sale by filling out the fields below</p>
-
+   <div className="flex flex-col items-center justify-center text-center mt-8 mb-16">
+      <h2 className="text-2xl font-bold mb-4">
+        <FaClipboardList className="inline-block mr-2 text-green-500" />
+        List your product for sale
+      </h2>
+      <p className="text-lg text-gray-600">
+        Ready to showcase your products to the world? Fill out the fields below and start selling!
+      </p>
     </div>
   
    <div className="flex flex-col items-center justify-center gap-8">
