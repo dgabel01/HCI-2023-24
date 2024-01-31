@@ -95,9 +95,11 @@ export default async function Blog() {
                   </span>
                 </div>
                 <div className="px-6 pt-4 pb-2">
-                  <span className="inline-block bg-purple-700 text-white px-3 py-1 text-sm font-semibold mr-2 mb-3 cursor-pointer tracking-widest rounded-full hover:bg-purple-600">
-                    <Link href={`/blog/${slug}`}>See more</Link>
-                  </span>
+                    <Link href={`/blog/${slug}`}>
+                    <span className="inline-block bg-purple-700 text-white px-3 py-1 text-sm font-semibold mr-2 mb-3 cursor-pointer tracking-widest rounded-full hover:bg-purple-600">
+                      See More
+                    </span>
+                    </Link>
                 </div>
               </div>
             </div>

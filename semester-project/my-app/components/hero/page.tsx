@@ -1,10 +1,15 @@
 import Image from "next/image";
 import heroImage from "@/public/photo-1579190520010-4226162a0cb5.png";
 import Link from "next/link";
+import Head from "next/head";
 
 export default function Hero() {
   return (
     <div className="relative w-full">
+      <Head>
+      <link rel="preload" as="image" href="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fphoto-1579190520010-4226162a0cb5.06468a34.png&w=3840&q=75"></link>
+
+      </Head>
       {/* Hero Image */}
       <div className="w-full h-0" style={{ paddingBottom: "8%",}}>
         <Image
@@ -28,7 +33,7 @@ export default function Hero() {
 
         {/* Content Container */}
         <div className="relative z-10 text-white text-center p-4 md:p-8 lg:p-12">
-          <div className="max-w-screen-md mb-40 bg-cyan-100 rounded-xl p-8 backdrop-blur-md backdrop-filter bg-opacity-50">
+          <div className="max-w-screen-md mb-40 bg-neutral-700 rounded-xl p-8 backdrop-blur-md backdrop-filter bg-opacity-50">
             <h1 className="text-5xl sm:text-xl mt-4 md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 decoration-white subpixel-antialiased">
               Start selling today!
             </h1>
@@ -38,12 +43,16 @@ export default function Hero() {
 
             {/* Buttons */}
             <div className="flex flex-row justify-center gap-2">
+            <Link href="/add-new">
               <button className="bg-blue-500 mr-4 text-white px-3 py-2 rounded-md hover:bg-blue-800 font-medium">
-                <Link href="/add-new">Start Selling</Link>
+              Start Selling
               </button>
+            </Link>
+            <Link href="/about">
               <button className="bg-green-500 text-white px-3 py-2 rounded-md hover:bg-green-700 font-medium">
-                <Link href="/about">Learn More</Link>
+                Learn More
               </button>
+            </Link>
             </div>
           </div>
         </div>

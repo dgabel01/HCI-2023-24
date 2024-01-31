@@ -11,7 +11,9 @@ export default function Footer() {
 			<div className="bg-gray-50 h-1/2 w-full flex md:flex-row flex-col justify-around items-start p-20 mt-20 bg-header">
 				<div className="p-5 ">
 					<ul>
-						<p className="text-white font-bold text-xl pb-6">EasyShop</p>
+						<li>
+							<p className="text-white font-bold text-xl pb-6">EasyShop</p>
+						</li>
 						<p className="text-white font-bold text-xl pb-6">
 							Your full circle marketplace
 						</p>
@@ -22,10 +24,15 @@ export default function Footer() {
 							<FaYoutube className="text-2xl cursor-pointer hover:text-red-600" />
 						
 						</div>*/}
-				<p className="text-white" >Addres: Shop Street 123</p>
-				<p className="text-white" >Telephone: +123 456 789</p>
-				<p className="text-white" >Email: easyshop@mail.com</p>
-				<p></p>
+						<li>
+							<p className="text-white" >Addres: Shop Street 123</p>
+						</li>
+						<li>
+							<p className="text-white" >Telephone: +123 456 789</p>
+						</li>
+						<li>
+							<p className="text-white" >Email: easyshop@mail.com</p>
+						</li>
 					</ul>
 				</div>
 				<div className="p-5">
@@ -87,9 +94,7 @@ export default function Footer() {
 			<div className="flex items-center justify-between p-5 bg-header">
    				<div className="flex flex-row ">
 					<h1 className="text-white font-semibold mr-4">2023/24 HCI course project </h1>
-					<Link href={"http://marjan.fesb.hr/~mcagalj/HCI/"} target="_blank" className="mt-1"><SiGithub size={21} color = "white"/>
-
-</Link>
+					<Link aria-label="Visit the GitHub page for HCI" href={"http://marjan.fesb.hr/~mcagalj/HCI/"} target="_blank" className="mt-1"><SiGithub size={21} color = "white"/></Link>
 				</div> 
    				 <Image src={footerLogo2} width={100} height={90} alt="logo" className="mix-blend-lighten"/>
 			</div>
