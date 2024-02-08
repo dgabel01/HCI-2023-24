@@ -21,7 +21,7 @@ function TestimonialCard({name, location,header, review}:TestimonialCardProps) {
     <div className="pt-6 md:p-8 text-center md:text-left space-y-4">
       <blockquote>
         <p className="text-lg font-medium">
-          "{review}"
+          &quot;{review}&quot;
         </p>
       </blockquote>
       <figcaption className="font-medium">
