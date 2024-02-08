@@ -4,6 +4,8 @@ import { createClient } from "contentful";
 import type { Metadata } from 'next'
 import cardPicture from "@/public/jason-goodman-Oalh2MojUuk-unsplash.jpg" 
 import Image from "next/image";
+import Divider from '@mui/material/Divider';
+
 
 export const metadata: Metadata = {
   title: 'EasyShop Blog',
@@ -64,7 +66,7 @@ export default async function BlogPage(props: BlogPageProps) {
           width={550}
           height={400}
           alt="post-picture"
-          className="mb-4"
+          className="mb-4 rounded-md mb-8"
         />
         <h1 className="font-extrabold text-3xl mb-8">{title}</h1>
         <p>By: {author}</p>
@@ -76,7 +78,8 @@ export default async function BlogPage(props: BlogPageProps) {
             day: "numeric",
           })}
         </p>
-        <div className="[&>p]:mb-8 [&>h2]:font-extrabold">
+        <Divider orientation="horizontal" flexItem />
+        <div className="text-xl mt-4 text-justify">
           {documentToReactComponents(content)}
         </div>
       </div>

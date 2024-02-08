@@ -4,7 +4,8 @@ import Link from "next/link";
 import React, { use, useState } from "react";
 import toast from "react-hot-toast";
 import { FaClipboardList } from 'react-icons/fa';
-
+import illustration from '@/public/uploading-8694003-6983292.png'
+import Image from "next/image";
 
 const Add = () => {
   const [title, setTitle] = useState("");
@@ -82,22 +83,37 @@ const Add = () => {
 
   return (
     <>
+
+
     <div className="flex flex-row justify-start mt-1 ml-1">
         <Link href={"/"}>
-          <p className="hover:text-green-500">Back to Home</p>
+        <span className="mr-2">🏡</span> Back to Home
         </Link>
     </div>
-   <div className="flex flex-col items-center justify-center text-center mt-8 mb-16">
-      <h2 className="text-2xl font-bold mb-4">
-        <FaClipboardList className="inline-block mr-2 text-green-500" />
-        List your product for sale
-      </h2>
-      <p className="text-lg text-gray-600">
-        Ready to showcase your products to the world? Fill out the fields below and start selling!
-      </p>
+
+
+    <div className="text-center mt-8 mb-16 xs:flex-col gap-8 md:flex md:flex-row items-center justify-center">
+      <div className="xs:mb-8">
+        <Image
+          src={illustration}
+          alt="addproduct-illustration"
+          className="xs:m-auto"
+        />
+      </div>
+      <div className="ml-8 flex flex-col justify-evenly gap-16">
+        <h2 className="mr-2 text-3xl font-bold mb-4 xs:text-center">
+          List your product for sale
+        </h2>
+        <p className="text-xl text-gray-600 xs:text-center mr-2">
+          Ready to showcase your products to the world? Fill out the fields below and start selling!
+        </p>
+      </div>
     </div>
+
   
-   <div className="flex flex-col items-center justify-center gap-8">
+
+<div className="flex flex-col items-center justify-center gap-8 w-full">
+  <h1 className="text-2xl mb-8">Product information:</h1>
   <label className="flex flex-col items-start">
     Title:
     <input
@@ -154,7 +170,6 @@ const Add = () => {
   )}
 </label>
 
-   
     <label className="flex flex-col items-start">
         Product image:
         <input

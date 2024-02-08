@@ -166,12 +166,12 @@ const Products = () => {
                 )}
                 <div className="card-body">
                   <h2 className="card-title">{product.title}</h2>
-                  <p className="text-sm rounded-xl bg-stone-200 w-24 p-2">
+                  <p className="text-sm rounded-xl bg-stone-200 w-fit p-2">
                     {product.customCategory ? product.customCategory : product.category}
                   </p>
                   <p>{product.description}</p>
                   <div className="card-actions justify-end">
-                    <p>{product.price}&euro;</p>
+                    <p className="font-semibold mt-2">{product.price}&euro;</p>
                     <button className="btn btn-primary">Buy Now</button>
                   </div>
                 </div>

@@ -36,10 +36,10 @@ const isActiveRoute = (route: string) => pathname === route;
         <HeaderLogo></HeaderLogo>
         <div className="grow">
             <div className="hidden sm:flex items-center justify-center gap-2 md:gap-8">
-                <Link className={`text-white ${isActiveRoute('/about') ? 'font-bold text-blue-500 bg-stone-400 p-2 rounded-md' : ''}`} href="/about">About us</Link>
-                <Link  className={`text-white ${isActiveRoute('/contact') ? 'font-bold text-blue-500 bg-stone-400 p-2 rounded-md' : ''}`} href="/contact">Contact us</Link>
-                <Link  className={`text-white ${isActiveRoute('/add-new') ? 'font-bold text-blue-500 bg-stone-400 p-2 rounded-md' : ''}`} href="/add-new">Add a product</Link>
-                <Link  className={`text-white ${isActiveRoute('/blog') ? 'font-bold text-blue-500 bg-stone-400 p-2 rounded-md' : ''}`} href="/blog">Blog</Link>
+                <Link className={`text-white ${isActiveRoute('/about') ? 'font-bold text-blue-500 bg-teal-500 p-2 rounded-md' : ''}`} href="/about">About us</Link>
+                <Link className={`text-white ${isActiveRoute('/contact') ? 'font-bold text-blue-500 bg-teal-500 p-2 rounded-md' : ''}`} href="/contact">Contact us</Link>
+                <Link className={`text-white ${isActiveRoute('/add-new') ? 'font-bold text-blue-500 bg-teal-500 p-2 rounded-md' : ''}`} href="/add-new">Add a product</Link>
+                <Link className={`text-white ${isActiveRoute('/blog') ? 'font-bold text-blue-500 bg-teal-500 p-2 rounded-md' : ''}`} href="/blog">Blog</Link>
             </div>
         </div>
         <div className="flex grow items-center justify-end sm:hidden">
@@ -76,25 +76,34 @@ const isActiveRoute = (route: string) => pathname === route;
                     <div className="mt-6">
                         {/*moze biti komponenta*/}
                         <nav className="grid gap-y-8">
-                        <Link className ="focus:outline-none focus:ring-inset focus:ring-gray-500 px-2" href="/about">About Us</Link>
-                        <Link className ="focus:outline-none focus:ring-inset focus:ring-gray-500 px-2" href="/contact">Contact Us</Link>
-                        <Link className ="focus:outline-none focus:ring-inset focus:ring-gray-500 px-2" href="/add-new">Add a Product</Link>
-                        <Link className ="focus:outline-none focus:ring-inset focus:ring-gray-500 px-2" href="/blog">Blog</Link>
+                            <Popover.Button as={Link} href="/about" className ="focus:outline-none focus:ring-inset focus:ring-gray-500 px-2">
+                                    About Us
+                            </Popover.Button>
+                            <Popover.Button as={Link} href="/contact" className ="focus:outline-none focus:ring-inset focus:ring-gray-500 px-2">
+                                    Contact Us
+                            </Popover.Button>
+                            <Popover.Button as={Link} href="/add-new" className ="focus:outline-none focus:ring-inset focus:ring-gray-500 px-2">
+                                    Add a Product
+                            </Popover.Button>
+                            <Popover.Button as={Link} href="/blog" className ="focus:outline-none focus:ring-inset focus:ring-gray-500 px-2">
+                                    Blog
+                            </Popover.Button>
                         </nav>
                     </div>
                     <div className="mt-2 flex flex-col items-start gap-2 ml-2 py-4">
-                    <Link  className ="mb-2" href="/shopping-cart">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                        </svg>
-                    </Link>
+                        <Popover.Button as={Link} href="/shopping-cart" className ="focus:outline-none focus:ring-inset focus:ring-gray-500 px-2"> 
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                            </svg>
+                        </Popover.Button>
+                    
                     </div>
                 </div>
             </div>
         </Popover.Panel>
     </Transition>
         <div className="hidden sm:flex flex-row md:flex items-center">
-        <Link className="mr-4 text-white"  href="/shopping-cart">
+        <Link className={`text-white ${isActiveRoute('/shopping-cart') ? 'font-bold text-blue-500 bg-teal-500 p-2 rounded-md' : ''}`} href="/shopping-cart">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
             </svg>

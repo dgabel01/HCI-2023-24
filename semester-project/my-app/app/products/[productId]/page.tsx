@@ -147,7 +147,7 @@ const SingleProductPage = () => {
   <>
     <div className="flex flex-row justify-start mt-1 ml-1">
         <Link href={"/"}>
-          <p className="hover:text-green-500">Back to Home</p>
+        <span className="mr-2">🏡</span> Back to Home
         </Link>
     </div>
     <main className='flex flex-col items-center justify-center mt-12'>
@@ -156,10 +156,10 @@ const SingleProductPage = () => {
         <figure><img src={selectedProduct.images.length > 0 ? selectedProduct.images[0] : url} alt="Stock photo" /></figure>
         <div className="card-body">
           <h2 className="card-title">{selectedProduct.title}</h2>
-          <p className='text-sm rounded-xl bg-stone-200 w-24 p-2'>{selectedProduct.category}</p>
+          <p className='text-sm rounded-xl bg-stone-200 w-fit p-2'>{selectedProduct.category}</p>
           <p>{selectedProduct.description}</p>
           <div className="card-actions justify-end">
-            <p>{selectedProduct.price}&euro;</p>
+            <p className='font-semibold mt-2'>{selectedProduct.price}&euro;</p>
           </div>
         </div>
       </div>

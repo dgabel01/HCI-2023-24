@@ -3,7 +3,7 @@ import { BlogQueryResult } from "@/app/types";
 import { createClient } from "contentful";
 import Image from "next/image";
 import cardPicture from "@/public/jason-goodman-Oalh2MojUuk-unsplash.jpg" 
-import { FaBookOpen } from 'react-icons/fa'; 
+import { FaBlog } from 'react-icons/fa'; 
 
 
 const client = createClient({
@@ -21,9 +21,9 @@ export default async function BlogInvite (){
 
   return (
     <>
-      <div className="flex flex-col items-center mt-8">
+      <div className="flex flex-col items-center mt-64">
       <h1 className="font-bold title-font xs:text-lg md:text-xl lg:text-3xl">
-        <FaBookOpen className="inline-block mb-2 mr-2 text-blue-500" />
+        <FaBlog className="inline-block mb-2 mr-4 text-blue-500" />
         Explore Our Insightful <Link href={`/blog`} className="hover:text-blue-400 hover:underline">Blog</Link>
       </h1>
       <p className="mt-4 mb-8 text-lg text-center md:text-xl">

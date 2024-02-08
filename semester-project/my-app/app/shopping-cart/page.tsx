@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Head from 'next/head';
 import { toast } from 'react-hot-toast';
 import Link from 'next/link';
-import { FaShoppingCart } from 'react-icons/fa'; 
+import { BsCartX } from "react-icons/bs";
 
 
 interface ProductQuantities {
@@ -49,7 +49,9 @@ export default function ShoppingCart() {
       }, 5500);
 
     } else {
-      setOrderStatus('Product count(s) must be at least 1 (one)');
+      toast.error("Order count must be at least 1 (one)!",{
+          duration:4000,
+      })
     }
   };
 
@@ -72,7 +74,7 @@ export default function ShoppingCart() {
       </Head>
       
       <div className="flex items-center justify-center mt-8">
-        <p className='text-2xl font-bold '>Shopping cart</p>
+        <p className='text-2xl font-bold mb-8 '>Shopping cart</p>
       </div>
       {cart.length > 0 ? (
         <div className='flex flex-col mt-8 sm:flex-row sm:justify-evenly'>
@@ -129,14 +131,19 @@ export default function ShoppingCart() {
             <p>Subtotal: {subtotal}&euro;</p>
             {allCountsAboveZero && <p>Shipping: {shipping}&euro;</p>}
             <p>Total price: {subtotal + (allCountsAboveZero ? shipping : 0)}&euro;</p>
-            <button className="btn btn-success xs:w-36 m-auto text-white" onClick={handleOrderClick}>{processing? "Ordering...": "Order"}</button>
+            <button
+              className={`btn btn-success xs:w-36 m-auto text-white ${processing ? 'opacity-50 pointer-events-none' : ''}`}
+              onClick={handleOrderClick}
+            >
+              {processing ? "Ordering..." : "Order"}
+            </button>
             {orderStatus && <p className='text-xl text-green-500 animate-pulse'>{orderStatus}</p>}
           </div>
         </div>
       ) : (
-        <div className='flex flex-col items-center justify-center'>
+        <div className='flex flex-col items-center justify-center gap-8'>
           <p className='text-2xl font-bold text-gray-600 my-8'>
-            <FaShoppingCart className='inline-block mb-2 mr-2 text-gray-400' />
+            <BsCartX className='inline-block mb-2 mr-2 text-red-400' />
             Your Shopping Cart is empty
           </p>
           <Link href={"/"} className='text-lg text-green-500 hover:text-green-600'>

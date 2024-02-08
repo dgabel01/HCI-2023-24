@@ -24,6 +24,8 @@ export default function Contact() {
           src={heroimg}
           layout="fill"
           alt="hero-picture"
+          quality={100}
+          priority
         />
       </div>
 
