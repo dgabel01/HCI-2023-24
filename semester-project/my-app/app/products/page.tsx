@@ -12,11 +12,10 @@ export interface Product {
   description: string;
   images: string[];
   category: string | "";
-  customCategory?: string; // Make sure customCategory is optional
+  customCategory?: string; 
 }
 
-const url =
-  "https://images.pexels.com/photos/2536965/pexels-photo-2536965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+const url = "https://images.pexels.com/photos/2536965/pexels-photo-2536965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
 
 const Products = () => {
   const { products } = useProductContext();
@@ -70,11 +69,11 @@ const Products = () => {
         <h1 className="text-center text-red-500 p-5 font-bold text-3xl mt-16">
           Oops! No products added yet <FaShoppingCart className="inline-block ml-2" />
         </h1>
-        <p className="text-gray-600 text-lg mb-8 text-center sm:text-left">
+        <p className="text-gray-600 text-lg mb-8 text-center sm:text-left mx-4">
           It looks like you haven&apos;t added any products for sale. Let&apos;s fix that!
         </p>
         <Link href={`/add-new`}>
-          <p className="bg-green-500 text-white py-2 px-4 rounded-full text-lg hover:bg-green-600">
+          <p className="bg-green-500 text-white py-2 px-4 rounded-full text-lg hover:bg-green-600 xs:text-center">
             List your products for sale now
           </p>
         </Link>
@@ -92,7 +91,7 @@ const Products = () => {
       <h1 className="text-2xl sm:text-3xl font-bold p-4 sm:p-10">Find the best products for sale</h1>
       <p className="mb-6 text-xl">Explore tech, clothing, and more</p>
 
-      <div className="flex xs:flex-col md:flex-row items-center justify-center mb-12">
+      <div className="flex xs:flex-col md:flex-row items-center justify-center mb-12 bg-red">
         <div className="flex xs:flex-col md:flex-row justify-start sm:justify-between gap-2 mb-2 sm:mb-4">
         {["Electronics", "Clothing", "Home and Garden"].map((category) => (
           <button
@@ -140,6 +139,7 @@ const Products = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full sm:w-64 p-2 outline-none rounded-2xl border-2 focus:shadow-lg"
           />
+          
         </div>
       </div>
 

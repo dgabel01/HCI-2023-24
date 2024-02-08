@@ -30,6 +30,12 @@ const SingleProductPage = () => {
 
 
   const handleEdit = () => {
+    if(incart){
+      toast.error("Can't edit a product that's in Cart!",{
+        duration:4000,
+      })
+      return;
+    }
     setIsEditing(true);
   };
 
@@ -139,6 +145,11 @@ const SingleProductPage = () => {
       </Head>
       {selectedProduct ? (
   <>
+    <div className="flex flex-row justify-start mt-1 ml-1">
+        <Link href={"/"}>
+          <p className="hover:text-green-500">Back to Home</p>
+        </Link>
+    </div>
     <main className='flex flex-col items-center justify-center mt-12'>
       <p className='my-8 text-xl font-bold'>Showing product : {selectedProduct.title}</p>
       <div className="card w-96 bg-base-100 shadow-xl mx-4 xs:w-64 md:w-96">
@@ -209,12 +220,12 @@ const SingleProductPage = () => {
           </>
         ) : (
           <>
-            <button className="btn btn-outline btn-error" onClick={handleEdit}>
-              Edit product
-            </button>
-            <button className="btn btn-outline btn-error" onClick={handleDelete}>
+           <button className="btn btn-outline btn-warning font-bold" onClick={handleEdit}>
+            Edit Product
+          </button>
+          <button className="btn btn-outline btn-error" onClick={handleDelete}>
               Delete product
-            </button>
+          </button>
           </>
         )}
       </div>

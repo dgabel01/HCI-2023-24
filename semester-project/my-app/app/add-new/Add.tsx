@@ -1,8 +1,10 @@
 "use client"
 import { useProductContext } from "@/context/ProductContext";
+import Link from "next/link";
 import React, { use, useState } from "react";
 import toast from "react-hot-toast";
 import { FaClipboardList } from 'react-icons/fa';
+
 
 const Add = () => {
   const [title, setTitle] = useState("");
@@ -80,6 +82,11 @@ const Add = () => {
 
   return (
     <>
+    <div className="flex flex-row justify-start mt-1 ml-1">
+        <Link href={"/"}>
+          <p className="hover:text-green-500">Back to Home</p>
+        </Link>
+    </div>
    <div className="flex flex-col items-center justify-center text-center mt-8 mb-16">
       <h2 className="text-2xl font-bold mb-4">
         <FaClipboardList className="inline-block mr-2 text-green-500" />
@@ -94,6 +101,7 @@ const Add = () => {
   <label className="flex flex-col items-start">
     Title:
     <input
+      id="text"
       type="text"
       value={title}
       onChange={(e) => setTitle(e.target.value)}
@@ -103,6 +111,7 @@ const Add = () => {
   <label className="flex flex-col items-start">
     Price:
     <input
+      id="number"
       type="number"
       value={price}
       onChange={(e) => setPrice(parseInt(e.target.value))}
@@ -112,6 +121,7 @@ const Add = () => {
   <label className="flex flex-col items-start">
     Description:
     <textarea
+      id="description"
       value={description}
       onChange={(e) => setDescription(e.target.value)}
       className="border-2 rounded-lg p-4 mt-1"
@@ -120,6 +130,7 @@ const Add = () => {
   <label className="flex flex-col items-start">
   Category:
   <select
+    id="category"
     value={category}
     onChange={(e) => setCategory(e.target.value)}
     className="border-2 rounded-lg p-1 mt-1"

@@ -23,7 +23,6 @@ export default function Contact() {
           className="absolute inset-0"
           src={heroimg}
           layout="fill"
-          objectFit="cover"
           alt="hero-picture"
         />
       </div>

@@ -7,6 +7,8 @@ import {Bars3Icon} from "@heroicons/react/24/solid"
 import {XMarkIcon} from "@heroicons/react/20/solid"
 import HeaderLogo from './logo';
 import HamburgerLogo from './hamburgerlogo';
+import { usePathname } from 'next/navigation'
+
 
 const pages = {
     Home:"/",
@@ -23,6 +25,10 @@ type Props = {}
 
 export default function Navbar({}: Props) {
 
+const pathname = usePathname()
+const isActiveRoute = (route: string) => pathname === route;
+
+
   return (
     <Popover 
     className={"xs:w-full flex items-center border-b-2 p-2 h-24 bg-header"}
@@ -30,10 +36,10 @@ export default function Navbar({}: Props) {
         <HeaderLogo></HeaderLogo>
         <div className="grow">
             <div className="hidden sm:flex items-center justify-center gap-2 md:gap-8">
-                <Link className="text-white" href="/about">About us</Link>
-                <Link  className="text-white"href="/contact">Contact us</Link>
-                <Link  className="text-white"href="/add-new">Add a product</Link>
-                <Link  className="text-white"href="/blog">Blog</Link>
+                <Link className={`text-white ${isActiveRoute('/about') ? 'font-bold text-blue-500 bg-stone-400 p-2 rounded-md' : ''}`} href="/about">About us</Link>
+                <Link  className={`text-white ${isActiveRoute('/contact') ? 'font-bold text-blue-500 bg-stone-400 p-2 rounded-md' : ''}`} href="/contact">Contact us</Link>
+                <Link  className={`text-white ${isActiveRoute('/add-new') ? 'font-bold text-blue-500 bg-stone-400 p-2 rounded-md' : ''}`} href="/add-new">Add a product</Link>
+                <Link  className={`text-white ${isActiveRoute('/blog') ? 'font-bold text-blue-500 bg-stone-400 p-2 rounded-md' : ''}`} href="/blog">Blog</Link>
             </div>
         </div>
         <div className="flex grow items-center justify-end sm:hidden">

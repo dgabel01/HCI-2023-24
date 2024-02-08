@@ -82,6 +82,7 @@ const Form: React.FC = () => {
             type="text"
             placeholder="First name*"
             className="rounded-xl p-2 border-2 hover:shadow-lg"
+            autoComplete='true'
           />
           <input
             value={formData.surname}
@@ -98,6 +99,7 @@ const Form: React.FC = () => {
           name="email"
           type="text"
           placeholder="Email address*"
+          autoComplete='true'
           className="p-2 rounded-xl w-80 border-2 hover:shadow-lg"
         />
 

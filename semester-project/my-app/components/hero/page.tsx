@@ -1,23 +1,19 @@
 import Image from "next/image";
-import heroImage from "@/public/photo-1579190520010-4226162a0cb5.png";
+import heroImage from "@/public/photo-1579190520010-4226162a0cb5.webp";
 import Link from "next/link";
-import Head from "next/head";
 
 export default function Hero() {
   return (
     <div className="relative w-full">
-      <Head>
-      <link rel="preload" as="image" href="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fphoto-1579190520010-4226162a0cb5.06468a34.png&w=3840&q=75"></link>
-
-      </Head>
       {/* Hero Image */}
-      <div className="w-full h-0" style={{ paddingBottom: "8%",}}>
+      <div className="w-full h-0" style={{ paddingBottom: "8%" }}>
         <Image
           className="absolute inset-0"
           src={heroImage}
+          alt="hero-picture"
           layout="fill"
           objectFit="cover"
-          alt="hero-picture"
+          priority
         />
       </div>
 
@@ -43,16 +39,16 @@ export default function Hero() {
 
             {/* Buttons */}
             <div className="flex flex-row justify-center gap-2">
-            <Link href="/add-new">
-              <button className="bg-blue-500 mr-4 text-white px-3 py-2 rounded-md hover:bg-blue-800 font-medium">
-              Start Selling
-              </button>
-            </Link>
-            <Link href="/about">
-              <button className="bg-green-500 text-white px-3 py-2 rounded-md hover:bg-green-700 font-medium">
-                Learn More
-              </button>
-            </Link>
+              <Link href="/add-new">
+                <button className="bg-blue-500 mr-4 text-white px-3 py-2 rounded-md hover:bg-blue-800 font-medium">
+                  Start Selling
+                </button>
+              </Link>
+              <Link href="/about">
+                <button className="bg-green-500 text-white px-3 py-2 rounded-md hover:bg-green-700 font-medium">
+                  Learn More
+                </button>
+              </Link>
             </div>
           </div>
         </div>

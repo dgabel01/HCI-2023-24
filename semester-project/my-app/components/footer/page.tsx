@@ -14,9 +14,11 @@ export default function Footer() {
 						<li>
 							<p className="text-white font-bold text-xl pb-6">EasyShop</p>
 						</li>
-						<p className="text-white font-bold text-xl pb-6">
-							Your full circle marketplace
-						</p>
+						<li>
+							<p className="text-white font-bold text-xl pb-6">
+								Your full circle marketplace
+							</p>
+						</li>
 						{/*<div className="flex gap-6 pb-5">
 							<FaInstagram className="text-2xl cursor-pointer hover:text-yellow-600" />
 							<FaTwitter className="text-2xl cursor-pointer hover:text-blue-600" />
@@ -37,7 +39,9 @@ export default function Footer() {
 				</div>
 				<div className="p-5">
 					<ul>
-						<p className="text-white font-bold text-2xl pb-4">Services</p>
+						<li>
+							<p className="text-white font-bold text-2xl pb-4">Services</p>
+						</li>
 						<li className="text-white text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
 							<Link href={"/products"}>Marketplace</Link>
 						</li>
@@ -48,7 +52,9 @@ export default function Footer() {
 				</div>
 				<div className="p-5">
 					<ul>
-						<p className="text-white font-bold text-2xl pb-4">About</p>
+						<li>
+							<p className="text-white font-bold text-2xl pb-4">About</p>
+						</li>
 						<li className="text-white text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
 						<Link href={"/about"}>About us </Link>
 						</li>
@@ -62,7 +68,9 @@ export default function Footer() {
 				</div>
 				<div className="p-5">
 					<ul>
-						<p className="text-white font-bold text-2xl pb-4">Social</p>
+						<li>
+							<p className="text-white font-bold text-2xl pb-4">Social</p>
+						</li>
 						<li className="text-white text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
 							<a href="https://github.com/dgabel01/HCI-2023-24" target="_blank">GitHub</a>
 						</li>
@@ -76,7 +84,9 @@ export default function Footer() {
 				</div>
 				<div className="p-5">
 					<ul>
-						<p className="text-white font-bold text-2xl pb-4">Legal</p>
+						<li>
+							<p className="text-white font-bold text-2xl pb-4">Legal</p>
+						</li>
 						<li className="text-white text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
 							Terms
 						</li>
@@ -94,7 +104,7 @@ export default function Footer() {
 			<div className="flex items-center justify-between p-5 bg-header">
    				<div className="flex flex-row ">
 					<h1 className="text-white font-semibold mr-4">2023/24 HCI course project </h1>
-					<Link aria-label="Visit the GitHub page for HCI" href={"http://marjan.fesb.hr/~mcagalj/HCI/"} target="_blank" className="mt-1"><SiGithub size={21} color = "white"/></Link>
+					<Link aria-label="Visit the GitHub page for HCI" href={"https://github.com/mcagalj/HCI-2023-24"} target="_blank" className="mt-1"><SiGithub size={21} color = "white"/></Link>
 				</div> 
    				 <Image src={footerLogo2} width={100} height={90} alt="logo" className="mix-blend-lighten"/>
 			</div>
