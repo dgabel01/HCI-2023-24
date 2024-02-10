@@ -79,7 +79,7 @@ export default async function BlogPage(props: BlogPageProps) {
           })}
         </p>
         <Divider orientation="horizontal" flexItem />
-        <div className="text-xl mt-4 text-justify">
+        <div className="leading-relaxed text-xl mt-4 xs:text-start leading-loose md:text-justify">
           {documentToReactComponents(content)}
         </div>
       </div>

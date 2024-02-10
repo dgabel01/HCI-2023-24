@@ -83,7 +83,7 @@ const Products = () => {
   }
 
   return (
-    <main className="flex flex-col items-center min-h-screen max-w-5xl m-auto p-4 sm:justify-center">
+    <main className="flex flex-col items-center min-h-screen max-w-5xl m-auto p-4">
       <Head>
         <title>Products</title>
         <meta name="description" content="Listed products for sale" />

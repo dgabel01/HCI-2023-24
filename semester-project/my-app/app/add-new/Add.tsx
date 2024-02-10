@@ -113,7 +113,7 @@ const Add = () => {
   
 
 <div className="flex flex-col items-center justify-center gap-8 w-full">
-  <h1 className="text-2xl mb-8">Product information:</h1>
+  <h1 className="text-2xl mb-8">Your Product Information:</h1>
   <label className="flex flex-col items-start">
     Title:
     <input
@@ -180,7 +180,7 @@ const Add = () => {
         />
     </label>
 
-  <button className="w-52 border-2 rounded-lg bg-sky-200 hover:bg-green-400" onClick={add}>
+  <button className="w-52 border-2 p-1 rounded-lg bg-green-300 hover:bg-green-500" onClick={add}>
     {loading ? "Adding product..." : "Add your product"}
   </button>
 </div>

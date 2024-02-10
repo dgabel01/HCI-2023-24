@@ -37,7 +37,7 @@ export default async function Blog() {
         <p className="mt-8 text-lg">Master the art of ecommerce by launching your own business</p>
         <p className="mt-8 text-lg">Stay updated with the newest design and development ideas and insights shared by the EasyShop team, powered by Contentful CMS</p>
         <div className="xs:text-center sm:text-left">
-          <Link href={`/`}><button className="btn btn-success mt-8">Get Started</button></Link>
+          <Link href={`/`}><button className="btn btn-accent mt-8">Get Started</button></Link>
         </div>
       </div>
       <div>
@@ -121,7 +121,7 @@ export default async function Blog() {
         <p className="text-2xl font-bold">Ready to try EasyShop?</p>
         <p>Get started by listing your products for sale</p>
         <Link href={`/add-new`}>
-          <button className="btn btn-outline btn-accent w-32">Start Now</button>
+          <button className="btn  btn-accent w-32">Start Now</button>
         </Link>
       </div>
     </div>
