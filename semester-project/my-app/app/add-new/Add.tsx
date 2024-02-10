@@ -176,7 +176,7 @@ const Add = () => {
         type="file"
         id="image-input"
         onChange={(e) => console.log(e.target.files)}
-        className="border-2 rounded-lg p-1 mt-1"
+        className="border-2 rounded-lg p-1 mt-1 xs:w-60 sm:w-64 md:w-full"
         />
     </label>
 
