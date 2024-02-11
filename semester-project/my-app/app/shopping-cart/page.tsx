@@ -74,7 +74,7 @@ export default function ShoppingCart() {
       </Head>
       
       <div className="flex items-center justify-center mt-8">
-        <p className='text-2xl font-bold mb-8 '>Shopping cart</p>
+        <p className='text-2xl font-bold mb-8 '>Your EasyShop Cart is empty</p>
       </div>
       {cart.length > 0 ? (
         <div className='flex flex-col mt-8 sm:flex-row sm:justify-evenly'>
@@ -97,7 +97,7 @@ export default function ShoppingCart() {
                   onClick={() =>
                     updateProductQuantity(product.id, (productQuantities[product.id] || 0) + 1)
                   }
-                  className=' mb-4 p-1 bg-stone-200 rounded-xl'
+                  className={ `mb-4 p-1 bg-stone-200 rounded-xl ${processing ? 'opacity-50 pointer-events-none' : ''}`}
 
                 >
                   +
@@ -106,13 +106,14 @@ export default function ShoppingCart() {
                   onClick={() =>
                     updateProductQuantity(product.id, Math.max(0, (productQuantities[product.id] || 0) - 1))
                   }
-                  className='p-1 bg-stone-200 rounded-xl'
+                  className= {`p-1 bg-stone-200 rounded-xl ${processing ? 'opacity-50 pointer-events-none' : ''}`}
                 >
                   -
                 </button>
                 <button
                   onClick={() => handleRemoveFromCart(product.id)}
-                  className='mt-4 p-2 mt-4 bg-red-300 dark:bg-red-500 font-bold rounded-xl'
+                  className={`mt-4 p-2 mt-4 bg-red-300 dark:bg-red-500 font-bold rounded-xl ${processing ? 'opacity-50 pointer-events-none' : ''}`}
+                  
                 >
                   Remove from Cart
                 </button>

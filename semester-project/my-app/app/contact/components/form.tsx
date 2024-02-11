@@ -140,7 +140,7 @@ const Form: React.FC = () => {
       <button
         type="submit"
         onClick={handleSubmit}
-        className={`btn btn-success p-4 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+        className={`btn btn-outline btn-accent px-4 py-2  ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
         disabled={loading}
         >
         {loading ? 'Sending...' : 'Send '}
