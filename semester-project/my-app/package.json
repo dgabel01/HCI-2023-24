@@ -16,6 +16,7 @@
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@mui/material": "^5.15.9",
+    "@vercel/speed-insights": "^1.0.10",
     "clsx": "^2.0.0",
     "contentful": "^10.6.16",
     "next": "13.5.6",
