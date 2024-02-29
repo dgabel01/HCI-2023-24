@@ -7,7 +7,6 @@ import Navbar from '../components/navbar'
 import Footer from '../components/footer/page';
 import ProductContextProvider from '@/context/ProductContextProvider';
 import { Toaster } from "react-hot-toast";
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 export const metadata: Metadata = {
@@ -23,7 +22,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={space.className}>
-        <SpeedInsights/>
         <Navbar/>
         <Toaster position="top-center" />
         <ProductContextProvider> {children}</ProductContextProvider>
